@@ -13,13 +13,14 @@ homepage = Blueprint(
 
 
 # Routes
+@homepage.route('/aboutus')
+@homepage.route('/home')
+@homepage.route('/homepage')
 @homepage.route('/')
-def index():
+def home():
     return render_template('homepage.html')
 
 
-@homepage.route('/homepage')
-@homepage.route('/home')
-def redirect_homepage():
-    # print('I am in /Homepage route!')
-    return redirect(url_for('homepage.index'))
+#create a function that checks if the user is logged in
+def loginval():
+    pass

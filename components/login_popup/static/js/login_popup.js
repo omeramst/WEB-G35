@@ -31,6 +31,8 @@ loginBtn.addEventListener("click", function (e) {
             consle.log(email, password);
         } else {
             /* here will be no validation only db check */
+            //login route
+
 
             //navbar display changes
             popup.style.display = "none";
