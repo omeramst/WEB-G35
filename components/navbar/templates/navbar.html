@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="{{ url_for('navbar.static', filename='css/navbar.css') }}"/>
+
+<header class="pageHeader">
+        <div class="logo">
+            <button class="logo" id="imagelogo" >
+                <img class="logo" src="{{ url_for('navbar.static', filename='media/logo.png') }}" alt="logo">
+            </button>
+        </div>
+        <div class="navbar" >
+    <!--    homepage button-->
+            <button class="navbarItem" id="ingredients"  >Ingredients</button>
+            <button class="navbarItem" id="recipes" >Recipes</button>
+            <button class="navbarItem" id="aboutus" >About Us</button>
+
+        </div>
+        <div class="userConnect">
+            <button class="userConnectItem" id="login" >Login</button>
+            <button class="userConnectItem" id="signup" >Sign up</button>
+            <button class="userConnectItem" id="logout" >Logout</button>
+            <button class="userConnectItem" id="userinfo" >User Info</button>
+        </div>
+    </header>
+
+<script src="{{ url_for('navbar.static', filename='js/navbar.js') }}"></script>

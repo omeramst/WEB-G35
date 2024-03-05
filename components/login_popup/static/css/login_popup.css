@@ -1,0 +1,52 @@
+/*login form*/
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+.popup-content {
+    background: #fff;
+
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    font-family: manrope , sans-serif;
+    color: #565D6DFF;
+}
+.loginForm {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.loginForm input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.loginForm button {
+    background-color: #6626e7;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.loginForm button:hover {
+    background-color: #3B1683FF;
+}
+.LoginHeader{
+    color: #333;
+    font-size: 24px;
+}
+.close-btn:hover {
+    cursor: pointer;
+}

@@ -36,7 +36,9 @@ from pages.page_error_handlers.page_error_handlers import page_error_handlers
 app.register_blueprint(page_error_handlers)
 
 ###### Components
-## Main menu
-from components.main_menu.main_menu import main_menu
-
-app.register_blueprint(main_menu)
+## navbar
+from components.navbar.navbar import navbar
+app.register_blueprint(navbar)
+## login
+from components.login_popup.login_popup import login_popup
+app.register_blueprint(login_popup)

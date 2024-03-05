@@ -1,0 +1,20 @@
+
+<link rel="stylesheet" href="{{ url_for('login_popup.static', filename='css/login_popup.css') }}"/>
+
+<div id="loginPopup" class="popup">
+    <div class="popup-content">
+        <span id="closePopup" class="close-btn">&times;</span>
+        <form class="loginForm">
+             <img class="logo" src="{{ url_for('login_popup.static', filename='media/logo.png') }}" alt="logo">
+                <h1 class="LoginHeader">Login</h1>
+                <text class="textheader">Fill Email</text>
+                <input type="email" class="input"  name="email" id="email" placeholder="Email">
+                <text class="textheader">Fill Password</text>
+                <input type="password" class="input"  name="password" id="password" placeholder="Password">
+            <button class="close-btn" id="loginSubmit">Login</button>
+        </form>
+
+    </div>
+</div>
+
+<script src="{{ url_for('login_popup.static', filename='js/login_popup.js') }}"></script>

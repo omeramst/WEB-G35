@@ -1,0 +1,77 @@
+/* header */
+.pageHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFFFF;
+    min-width: 630PX;
+}
+.pageHeader button:hover {
+    cursor: pointer;
+}
+.logo{
+    background: none;
+    border: none;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbarItem {
+    background: none;
+    border: none;
+    font-family: manrope , sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    opacity: 1;
+    color: #565D6DFF;
+    padding: 3px 15px;
+
+}
+.userConnect{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.userConnectItem{
+    font-family: manrope , sans-serif;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 3px;
+    font-size: 16px;
+    white-space: nowrap;
+}
+#login{
+    background-color: #6D31ED;
+    color: #FFFFFFFF;
+    display: none;
+
+}
+#logout{
+    background-color: #6D31ED;
+    color: #FFFFFFFF;
+    display: none;
+}
+#signup {
+    color: #6D31ED;
+    background: #F3F5FCFF;
+    display: none;
+}
+#userinfo{
+    color: #6D31ED;
+    background: #F3F5FCFF;
+        Display: none;
+}
+.navbarItem:hover {
+    background-color: #6D31ED;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.navbarItem {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
