@@ -32,6 +32,10 @@ app.register_blueprint(signup)
 from pages.userinfo.userinfo import userinfo
 app.register_blueprint(userinfo)
 
+##recipes
+from pages.recipes.recipes import recipes
+app.register_blueprint(recipes)
+
 ###### Components
 ## navbar
 from components.navbar.navbar import navbar

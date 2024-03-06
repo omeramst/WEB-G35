@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'Ingredients' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('recipes.static', filename='css/recipes.css') }}"/>
+{% endblock %}
+
+
+{% block page_body_content %}
+<div id="main">
+    <div class="filters-cont">
+        <h3 class="filter-cont-header">
+            <img src="{{ url_for('recipes.static', filename='media/list_2.png') }}" alt=""> Filters
+        </h3>
+        <!--            <button class="filter-apply-button" type="button">Show Favorites</button>-->
+        <br>
+        <h3 class="filter-headers">Difficulty</h3>
+        <label>
+            <input type="checkbox" name="Difficulty" value="easy"> Easy
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" name="Difficulty" value="medium"> Normal
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" name="Difficulty" value="hard"> Hard
+        </label>
+        <br>
+        <hr class="line">
+
+        <h3 class="filter-headers">Servings</h3>
+        <p id="sliderValue">5</p>
+        <div class="slider">
+            <input type="range" min="1" max="10" value="5" class="slider-input" id="servingsSlider">
+        </div>
+
+        <h3 class="filter-headers">Cuisine</h3>
+        <label>
+            <input type="checkbox" name="Cuisine" value="italian"> Italian
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" name="Cuisine" value="Asian"> Asian
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" name="Cuisine" value="Mediterranean"> Mediterranean
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" name="Cuisine" value="General"> General
+        </label>
+        <br>
+        <hr class="line">
+        <button class="filter-apply-button" type="button">Apply</button>
+
+
+        <!-- Add your filter checkboxes and sliders here -->
+    </div>
+    <div class="recipes-display-cont">
+        <div class="header-container">
+            <h1 id="recipes-header">Recipes</h1>
+            <button class="filter-apply-button favorite-button" type="button">Show Favorites</button>
+        </div>
+        <br>
+        <div class="recipes-grid">
+            <!-- Ofri - This is the container where the JavaScript will append the recipe cards, Yalla Balagan -->
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block page_body_js %}
+<script src="{{ url_for('recipes.static', filename='js/recipes.js') }}"></script>
+{% endblock %}

@@ -5,7 +5,7 @@ const signupBtn = document.getElementById("signup");
 const cookifyBtn = document.getElementById("imagelogo");
 const aboutBtn = document.getElementById("aboutus");
 const userinfobtn = document.getElementById("userinfo");
-const recipes = document.getElementById("recipes");
+const recipesbtn = document.getElementById("recipes");
 const ingredientsbut = document.getElementById("ingredients");
 const user = JSON.parse(localStorage.getItem('user'));
 
@@ -49,7 +49,7 @@ logoutBtn.addEventListener("click", function (e) {
 signupBtn.addEventListener("click", function (e) {
     e.preventDefault();
     //variables
-    window.location.href = "SignUp.html";
+    window.location.href = "signup";
 });
 
 //cookify button
@@ -71,9 +71,9 @@ userinfobtn.addEventListener("click", function (e) {
 });
 
 //recipe button
-recipes.addEventListener("click", function (e) {
+recipesbtn.addEventListener("click", function (e) {
     e.preventDefault();
-    window.location.href = "Recipes.html";
+    window.location.href = "recipes";
 });
 //ingredient button
 ingredientsbut.addEventListener("click", function (e) {
