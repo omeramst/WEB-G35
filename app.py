@@ -18,15 +18,15 @@ def set_default_session():
 ###### Pages
 ## Homepage
 from pages.homepage.homepage import homepage
-
 app.register_blueprint(homepage)
 
 ## Ingredients
 from pages.ingredients.ingredients import ingredients
-
 app.register_blueprint(ingredients)
 
-
+##signup
+from pages.signup.signup import signup
+app.register_blueprint(signup)
 
 
 

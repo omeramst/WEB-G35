@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    align-items: stretch; /* Adjust alignment */
+    justify-content: stretch; /* Adjust alignment */
+    height: 100vh;
+}
+
+.page{
+    flex: 1;
+}
+
+.pic{
+    background-image: url("../media/Login.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+    background-color: #f5f5f5;
+    flex: 2;
+    font-family: manrope , sans-serif;
+}
+.page {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.signUpForm {
+    text-align: center;
+    font-family: manrope , sans-serif;
+}
+.logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+.signHeader {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.textheader {
+    color: #555;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+.loginPic {
+    max-width: 100%;
+    height: auto;
+
+}
+
+.picText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 150px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.picP{
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+.label{
+    color: #555;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.multipuleSelection {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: manrope , sans-serif;
+    color: #555;
+    text-align: center;
+}
+
+.option {
+    padding: 8px;
+}

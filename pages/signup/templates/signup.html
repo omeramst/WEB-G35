@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookify</title>
+    <link rel="stylesheet" href="{{ url_for('signup.static', filename='css/signup.css') }}"/>
+    <link rel="icon" href="{{ url_for('static', filename='media/img/favicon/logo.jpeg') }}"/>
+</head>
+<body>
+<div class="container">
+    <div class="page">
+        <form class="signUpForm">
+            <img class="logo" src="{{ url_for('signup.static', filename='media/logo.png') }}" alt="logo">
+            <h1 class="signHeader">Sign Up</h1>
+            <text class="textheader">Fill User Name</text>
+            <input type="text" class="input" name="username" id="username" placeholder="Username">
+            <text class="textheader">Fill Email</text>
+            <input type="email" class="input" name="email" id="email" placeholder="Email">
+            <text class="textheader">Fill Password</text>
+            <input type="password" class="input" name="password" id="password" placeholder="Password">
+            <text class="textheader">Please confirm Password</text>
+            <input type="password" class="input" name="confirmPassword" id="confirmPassword"
+                   placeholder="Confirm Password">
+            <button type="submit" id="btn">Next</button>
+            <p>Already have an account? <a href="HomePage.html">Home page</a></p>
+        </form>
+    </div>
+    <div class="pic">
+        <div class="picText">
+            <p class="picP">
+                “I can take an eggplant and dive into his world. He has become my whole world, and I enter his magic
+                cave”
+            </p>
+            <p class="picP">
+                Eyal Shani - Michelin Starred Chef
+            </p>
+        </div>
+    </div>
+    </img>
+</div>
+</div>
+<script src="{{ url_for('signup.static', filename='js/signup.js') }}"></script>
+</body>
+</html>
