@@ -1,8 +1,5 @@
-
 const ingredients = [
     // Fix the path of the images, all are in the same folder. For example, the Kiwi path is `pages/ingredients/static/media/photos/Kiwi.png`
-
-
 
 
     { name: "Kiwi", image: `...media/photos/Kiwi.png`, type: "Fruits" },
