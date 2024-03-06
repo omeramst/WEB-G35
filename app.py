@@ -21,6 +21,14 @@ from pages.homepage.homepage import homepage
 
 app.register_blueprint(homepage)
 
+## Ingredients
+from pages.ingredients.ingredients import ingredients
+
+app.register_blueprint(ingredients)
+
+
+
+
 
 ###### Components
 ## navbar

@@ -78,7 +78,7 @@ recipes.addEventListener("click", function (e) {
 //ingredient button
 ingredients.addEventListener("click", function (e) {
     e.preventDefault();
-    window.location.href = "Ingredients.html";
+    window.location.href = "ingredients.html";
 });
 
 class User {
