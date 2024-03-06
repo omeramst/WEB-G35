@@ -36,6 +36,10 @@ app.register_blueprint(userinfo)
 from pages.recipes.recipes import recipes
 app.register_blueprint(recipes)
 
+##singleRecipe
+from pages.singleRecipe.singleRecipe import singleRecipe
+app.register_blueprint(singleRecipe)
+
 ###### Components
 ## navbar
 from components.navbar.navbar import navbar
