@@ -67,7 +67,7 @@ aboutBtn.addEventListener("click", function (e) {
 //user info button
 userinfobtn.addEventListener("click", function (e) {
     e.preventDefault();
-    window.location.href = "UserInfo.html";
+    window.location.href = "userinfo";
 });
 
 //recipe button

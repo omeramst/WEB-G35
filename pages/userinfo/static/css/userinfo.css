@@ -1,0 +1,95 @@
+/* body image */
+body {
+    background-image: url("../media/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+/*user info*/
+.infoForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 150px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    min-width: 450px;
+    min-height: 400px;
+}
+
+.forms {
+    display: flex;
+    justify-content: space-between; /* Use space-between to place forms side by side */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping to a new line if the space is not enough */
+    font-family: 'Manrope', sans-serif;
+    text-align: center;
+    color: #4B515EFF;
+}
+
+.personal,
+.preferences {
+    width: 48%; /* Set the width of each form to 48% to leave some space between them */
+}
+
+.form-group {
+    margin: 15px;
+}
+.label {
+    margin-bottom: 10px;
+}
+
+.input, .multipuleSelection {
+    width: 100%;
+    padding: 8px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+.submit-btn {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.submit-btn:hover {
+    background-color: #45a049;
+}
+.btn {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 15px;
+}
+/*message*/
+.message {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: manrope , sans-serif;
+    color: #fff;
+    background-color: #3498db; /* Green background color */
+    border-radius: 5px;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.message.hide {
+    animation: fadeOut 1s ease-in-out;
+    animation-fill-mode: forwards;
+}

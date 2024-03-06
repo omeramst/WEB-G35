@@ -28,7 +28,9 @@ app.register_blueprint(ingredients)
 from pages.signup.signup import signup
 app.register_blueprint(signup)
 
-
+##userinfo
+from pages.userinfo.userinfo import userinfo
+app.register_blueprint(userinfo)
 
 ###### Components
 ## navbar
