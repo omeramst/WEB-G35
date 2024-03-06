@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import session
+from flask import session, request
 
 ###### App setup
 app = Flask(__name__)
@@ -7,8 +7,13 @@ app.config.from_pyfile('settings.py')
 
 ##session
 app.secret_key = '123'
-session['logged_in'] = False
-session['username'] = ''
+# Set up session defaults
+@app.before_request
+def set_default_session():
+    if 'logged_in' not in session:
+        session['logged_in'] = False
+    if 'username' not in session:
+        session['username'] = ''
 
 ###### Pages
 ## Homepage
@@ -24,3 +29,4 @@ app.register_blueprint(navbar)
 ## login
 from components.login_popup.login_popup import login_popup
 app.register_blueprint(login_popup)
+

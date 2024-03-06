@@ -30,28 +30,43 @@ loginBtn.addEventListener("click", function (e) {
             password.value = "";
             consle.log(email, password);
         } else {
-            /* here will be no validation only db check */
-            //login route
+        //va
 
+        //login route
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: email, password: password }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                //navbar display changes
+                popup.style.display = "none";
+                const logoutbutn = document.getElementById("logout");
+                const userinfobtn = document.getElementById("userinfo");
+                const loginbutn = document.getElementById("login");
+                const signupbutn = document.getElementById("signup");
+                loginbutn.style.display = "none";
+                signupbutn.style.display = "none";
+                logoutbutn.style.display = "block";
+                userinfobtn.style.display = "block";
 
-            //navbar display changes
-            popup.style.display = "none";
-            const logoutbutn = document.getElementById("logout");
-            const userinfobtn = document.getElementById("userinfo");
-            const loginbutn = document.getElementById("login");
-            const signupbutn = document.getElementById("signup");
-            loginbutn.style.display = "none";
-            signupbutn.style.display = "none";
-            logoutbutn.style.display = "block";
-            userinfobtn.style.display = "block";
-
-
-            //save user in local storage
-            console.log(email, password);
-            const user = new User();
-            user.email = email;
-            user.password = password;
-            localStorage.setItem('user', JSON.stringify(user));
-        }
+                //save user in local storage
+                console.log(email, password);
+                const user = new User();
+                user.email = email;
+                user.password = password;
+                localStorage.setItem('user', JSON.stringify(user));
+            } else {
+                alert('Login failed');
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
     });
 });
