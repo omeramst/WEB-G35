@@ -18,4 +18,7 @@ def login():
         return jsonify({'error': 'Invalid email or password', 'success': False}), 401
 
 def user_authenticated(email, password):
-    return True  # for now, just return True
+    if email == 'omer@gamil.com' and password == '123':
+        return True  # for now, just return True
+    else:
+        return False
