@@ -12,3 +12,5 @@ DB = {
     'password': os.environ.get('DB_PASSWORD'),
     'database': os.environ.get('DB_NAME')
 }
+
+mongoDB = {'uri': "mongodb+srv://omer:123@cookify.labufvf.mongodb.net/?retryWrites=true&w=majority&appName=Cookify"}

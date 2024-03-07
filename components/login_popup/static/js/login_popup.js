@@ -29,9 +29,14 @@ loginBtn.addEventListener("click", function (e) {
             email.value = "";
             password.value = "";
             consle.log(email, password);
-        } else {
-        //va
-
+        }
+        if (email.indexOf('@') === -1 || email.indexOf('.') === -1)
+        {
+            alert('Please enter a valid email');
+            email.value = "";
+            password.value = "";
+        }
+        else {
         //login route
         fetch('/login', {
             method: 'POST',
@@ -53,15 +58,8 @@ loginBtn.addEventListener("click", function (e) {
                 signupbutn.style.display = "none";
                 logoutbutn.style.display = "block";
                 userinfobtn.style.display = "block";
-
-                //save user in local storage
-                console.log(email, password);
-                const user = new User();
-                user.email = email;
-                user.password = password;
-                localStorage.setItem('user', JSON.stringify(user));
             } else {
-                alert('Login failed');
+                alert(data.error);
             }
         })
         .catch((error) => {

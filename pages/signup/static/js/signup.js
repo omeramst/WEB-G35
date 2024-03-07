@@ -49,7 +49,7 @@ signupbtn.addEventListener('click', function(e){
               <option class="option" value="shellfish">Shellfish</option>
                  </select>
             <button type="submit" id="signup">Sign Up</button>
-            <p>Already have an account? <a href="HomePage.html">Home page</a></p>
+            <p>Already have an account? <a href="homepage">Home page</a></p>
             `;
         const signup = document.querySelector('#signup');
         signup.addEventListener('click', function(e){

@@ -7,16 +7,29 @@ const aboutBtn = document.getElementById("aboutus");
 const userinfobtn = document.getElementById("userinfo");
 const recipesbtn = document.getElementById("recipes");
 const ingredientsbut = document.getElementById("ingredients");
-const user = JSON.parse(localStorage.getItem('user'));
+//check if user is logged in
+var loggedIn = false;
+fetch('/login', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+})
+.then(response => response.json())
+.then(data => {
+    loggedIn = data.logged_in; // Assign the value of data.loggedIn to the loggedIn variable
 
+})
+.catch(error => {
+    console.error('Error:', error);
+});
 //check if user is logged in
 window.onload = function () {
     const logoutbutn = document.getElementById("logout");
     const userinfobtn = document.getElementById("userinfo");
     const loginbutn = document.getElementById("login");
     const signupbutn = document.getElementById("signup");
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
+    if (loggedIn) {
         loginbutn.style.display = "none";
         signupbutn.style.display = "none";
         logoutbutn.style.display = "block";
@@ -32,17 +45,9 @@ window.onload = function () {
 //logout button
 logoutBtn.addEventListener("click", function (e) {
     e.preventDefault();
-    //remove user from local storage
-    localStorage.removeItem('user');
-    //navbar display changes
-    const logoutbutn = document.getElementById("logout");
-    const userinfobtn = document.getElementById("userinfo");
-    const loginbutn = document.getElementById("login");
-    const signupbutn = document.getElementById("signup");
-    loginbutn.style.display = "block";
-    signupbutn.style.display = "block";
-    logoutbutn.style.display = "none";
-    userinfobtn.style.display = "none";
+    //logout route
+    window.location.href = "logout";
+
 });
 
 //signup button

@@ -1,6 +1,6 @@
-window.onload = function () {
+window.addEventListener('load', function() {
     createRecipeCards();
-}
+});
 
 // Ofri - Get the slider element from the HTML using its id
 var slider = document.getElementById("servingsSlider");
