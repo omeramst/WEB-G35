@@ -144,3 +144,10 @@ a:hover {
 .option {
     padding: 8px;
 }
+.form1{
+    display: block;
+}
+.form2{
+    display: none;
+}
+

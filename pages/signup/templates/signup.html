@@ -9,8 +9,8 @@
 <body>
 <div class="container">
     <div class="page">
-        <form class="signUpForm">
-            <img class="logo" src="{{ url_for('signup.static', filename='media/logo.png') }}" alt="logo">
+        <img class="logo" src="{{ url_for('signup.static', filename='media/logo.png') }}" alt="logo">
+        <form class="signUpForm form1">
             <h1 class="signHeader">Sign Up</h1>
             <text class="textheader">Fill User Name</text>
             <input type="text" class="input" name="username" id="username" placeholder="Username">
@@ -22,6 +22,23 @@
             <input type="password" class="input" name="confirmPassword" id="confirmPassword"
                    placeholder="Confirm Password">
             <button type="submit" id="btn">Next</button>
+            <p>Already have an account? <a href="homepage">Home page</a></p>
+        </form>
+        <form class="signUpForm form2">
+            <h1 class="signHeader">Additional Information</h1>
+            <label class="label">Select Your Favorite Cuisine:</label>
+            <select class="multipuleSelection" id="favoriteCuisine" name="favoriteCuisine" multiple>
+                {% for cuisine in cusines %}
+                <option value="{{ cuisine }}">{{ cuisine }}</option>
+                {% endfor %}
+            </select>
+            <label class="label">Select Your Food Sensitivities:</label>
+            <select class="multipuleSelection" id="foodSensitivity" name="foodSensitivity" multiple>
+                {% for sensitivity in sensitivities %}
+                <option value="{{ sensitivity }}">{{ sensitivity }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" id="signup">Sign Up</button>
             <p>Already have an account? <a href="homepage">Home page</a></p>
         </form>
     </div>
