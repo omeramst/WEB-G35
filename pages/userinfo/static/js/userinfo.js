@@ -1,5 +1,5 @@
 //check if user is logged in
-window.onload = function () {
+window.addEventListener('load', function() {
     //displaying user details
     if (user) {
         document.getElementById("username").value = user.username;
@@ -16,7 +16,7 @@ window.onload = function () {
             });
         }
     }
-}
+})
 
 //variables
 const user = JSON.parse(localStorage.getItem('user')); //need to change server
