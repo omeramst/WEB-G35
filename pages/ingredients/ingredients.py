@@ -1,5 +1,6 @@
-from flask import Blueprint
+from flask import Blueprint, request, session
 from flask import render_template, redirect, url_for
+from utilities.db.db_manager import DB
 
 
 ingredients = Blueprint(
@@ -11,5 +12,7 @@ ingredients = Blueprint(
 )
 
 @ingredients.route('/ingredients')
-def home():
-    return render_template('ingredients.html')
+def load_ingredients():
+    ingredients = DB.get_ingredients()
+    return render_template('ingredients.html', ingredients=ingredients)
+

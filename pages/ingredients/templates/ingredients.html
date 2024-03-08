@@ -69,6 +69,13 @@
 
     <div class="ingredient-grid">
         <!-- Ofri - Ingredient cards should be added here by the Script I will build -->
+        {% for ingredient in ingredients %}
+        <div class="ingredient-card" data-type="{{ ingredient.type }}">
+            <img src="{{ url_for('ingredients.static', filename='media/photos/' + ingredient.image) }}" alt="{{ ingredient.name }}">
+            <h3 class="ingredient-name">{{ ingredient.name }}</h3>
+            <button class="IngAddButton">Add</button>
+        </div>
+    {% endfor %}
     </div>
 </div>
 {% endblock %}
