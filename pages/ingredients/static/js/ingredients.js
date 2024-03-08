@@ -51,10 +51,97 @@
 //     if (applyButton.style.backgroundColor === 'rgb(98, 205, 20)') { // //Ofri - IF already green cause was clicked before
 //         applyButton.style.backgroundColor = '#6D31EDFF';
 //     } else { //Ofri - If not green cause was not clicked before
-//         applyButton.style.backgroundColor = '#62CD14';
+//         applyButton.style.// Create an empty array to store the chosen ingredients
+
 //     }
 // });
 //
 //     ingredientCard.append(ingredientImage, ingredientName, applyButton);
 //     ingredientGrid.append(ingredientCard);
 // });
+
+// Create an empty array to store the chosen ingredients
+let SelectedIng = [];
+
+// Get all 'Add' buttons
+let buttons = document.querySelectorAll('.IngAddButton');
+
+
+// Console Validation of the array
+
+// Add event listener to each add button
+buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Get the ingredient name from the sibling h3 element
+        let ingredientName = this.previousElementSibling.textContent;
+
+        if (this.style.backgroundColor === 'rgb(98, 205, 20)') { // If already green cause was clicked before
+            this.style.backgroundColor = '#6D31EDFF'; // Change back to purple
+            this.textContent = 'Add'; // Change text back to 'Add'
+            const index = SelectedIng.indexOf(ingredientName); // Find the index of the ingredient in the array
+            if (index > -1) {
+                SelectedIng.splice(index, 1); // Remove the ingredient from the array
+            }
+        } else { // If not green cause was not clicked before
+            this.style.backgroundColor = 'rgb(98, 205, 20)'; // Change to green
+            this.textContent = 'Remove'; // Change text to 'Remove'
+            SelectedIng.push(ingredientName); // Add the ingredient to the array
+        }
+        console.log(SelectedIng);
+    });
+});
+
+
+// Now the filters part
+
+
+document.querySelector('#category-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Collect all checked categories
+    let checkedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(input => input.value);
+
+    // Send a request to the server with the selected categories
+    fetch('/ingredients', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({categories: checkedCategories}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+          // Clear the ingredient grid
+    let ingredientGrid = document.querySelector('.ingredient-grid');
+    ingredientGrid.innerHTML = '';
+
+    // Create a new card for each ingredient and append it to the grid
+        data.forEach(ingredient => {  // Changed from data.ingredients.forEach to data.forEach
+        const ingredientCard = document.createElement('div');
+        ingredientCard.classList.add('ingredient-card');
+        ingredientCard.dataset.type = ingredient.type;
+
+        const ingredientImage = document.createElement('img');
+        ingredientImage.src = ingredient.image;
+        ingredientImage.alt = ingredient.name;
+
+        const ingredientName = document.createElement('h3');
+        ingredientName.textContent = ingredient.name;
+        ingredientName.classList.add('ingredient-name');
+
+        const applyButton = document.createElement('button');
+        applyButton.textContent = 'Add';
+        applyButton.classList.add('IngAddButton');
+
+        ingredientCard.append(ingredientImage, ingredientName, applyButton);
+        ingredientGrid.append(ingredientCard);
+    });
+
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation: ', error);
+    });
+
+});
+

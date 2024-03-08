@@ -77,6 +77,10 @@ class DBMongo:
     def get_ingredients(self):
         return self.ingredients.find()
 
+    # get ingredients filtered by type, This can get several types at once
+    def get_ingredients_by_type(self, types):
+        return self.ingredients.find({'type': {'$in': types}})
+
 
 # Creates an instance for the DBManager class for export.
 DB = DBMongo()
