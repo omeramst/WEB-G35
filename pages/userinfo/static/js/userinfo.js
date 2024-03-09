@@ -1,51 +1,111 @@
 //check if user is logged in
-window.addEventListener('load', function() {
-    //displaying user details
-    if (user) {
-        document.getElementById("username").value = user.username;
-        document.getElementById("password").value = user.password;
-        document.getElementById("email").value = user.email;
-        if (user.cuisine) {
-            user.cuisine.forEach(cuisine => {
-                document.getElementById("favoriteCuisine").querySelector(`option[value="${cuisine}"]`).selected = true;
-            });
-        }
-        if (user.sensitive) {
-            user.sensitive.forEach(sensitive => {
-                document.getElementById("foodSensitivity").querySelector(`option[value="${sensitive}"]`).selected = true;
-            });
-        }
-    }
+window.addEventListener('load', function () {
+
 })
 
 //variables
-const user = JSON.parse(localStorage.getItem('user')); //need to change server
+const user = new User();
 const submit = document.getElementById("submit");
 
 //function submit
-submit.addEventListener("click", function (e) {
+submit.addEventListener("click", async function (e) {
     e.preventDefault();
 
     //changing the user details
-    console.log(user);
     user.username = document.getElementById("username").value;
     user.password = document.getElementById("password").value;
     user.email = document.getElementById("email").value;
     user.cuisine = getSelectedOptions("favoriteCuisine")
     user.sensitive = getSelectedOptions("foodSensitivity")
-    localStorage.setItem('user', JSON.stringify(user));
 
-    //message
-    const message = document.getElementById("message");
-    message.innerHTML = "Your details have been updated";
-    message.style.display = "block";
-    message.classList.add('hide');
-    setTimeout(() => {
-        message.classList.remove('hide');
-        message.innerHTML = "";
-        message.style.display = "none";
-    }, 1000);
+    //check if user details are valid
+    if (!user.username || !user.password || !user.email || !user.cuisine || !user.sensitive) {
+        //message
+        const message = document.getElementById("message");
+        message.innerHTML = "Please fill in all the fields";
+        message.style.display = "block";
+        message.classList.add('hide');
+        setTimeout(() => {
+            message.classList.remove('hide');
+            message.innerHTML = "";
+            message.style.display = "none";
+        }, 2000);
+        return;
+    }
+    if (user.password.length < 8) {
+        //message
+        const message = document.getElementById("message");
+        message.innerHTML = "Password must be at least 8 characters long";
+        message.style.display = "block";
+        message.classList.add('hide');
+        setTimeout(() => {
+            message.classList.remove('hide');
+            message.innerHTML = "";
+            message.style.display = "none";
+        }, 2000);
+        return;
+    }
+    if (!user.email.includes("@") || !user.email.includes(".")) {
+        //message
+        const message = document.getElementById("message");
+        message.innerHTML = "Please enter a valid email address";
+        message.style.display = "block";
+        message.classList.add('hide');
+        setTimeout(() => {
+            message.classList.remove('hide');
+            message.innerHTML = "";
+            message.style.display = "none";
+        }, 2000);
+        return;
+    }
 
+    var data;
+    //update user details
+    await fetch('userinfo', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(user)
+    }).then(response => response.json()).then(data => {
+    if (data.success) {
+
+        //message
+        const message = document.getElementById("message");
+        message.innerHTML = "Your details have been updated";
+        message.style.display = "block";
+        message.classList.add('hide');
+        setTimeout(() => {
+            message.classList.remove('hide');
+            message.innerHTML = "";
+            message.style.display = "none";
+        }, 2000);
+    } else {
+        if (data.error === "email already exist") {
+            //message
+            const message = document.getElementById("message");
+            message.innerHTML = "Email already exists";
+            message.style.display = "block";
+            message.classList.add('hide');
+            setTimeout(() => {
+                message.classList.remove('hide');
+                message.innerHTML = "";
+                message.style.display = "none";
+            }, 2000);
+            return;
+        } else {
+
+            //message
+            const message = document.getElementById("message");
+            message.innerHTML = "Your details have not been updated, please try again";
+            message.style.display = "block";
+            message.classList.add('hide');
+            setTimeout(() => {
+                message.classList.remove('hide');
+                message.innerHTML = "";
+                message.style.display = "none";
+            }, 2000);
+        }
+    }
+});
 });
 
 

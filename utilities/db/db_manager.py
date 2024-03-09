@@ -57,10 +57,25 @@ class DBMongo:
                 {'email': email.lower(), 'password': password, 'cuisine': cusines, 'sensitivity': sensitivities,
                  'username': username})
             session['logged_in'] = True
-            session['username'] = username
+            session['email'] = email.lower()
             return jsonify({'success': True}), 200
         except:
             return jsonify({'error': 'error in signup', 'success': False}), 400
+
+    #get user details
+    def get_logged_user(self):
+        return self.users.find_one({'email': session['email']})
+
+    #update user details
+    def userupdate(self, email, password, cusines, sensitivities, username):
+        #check if the user exists
+        if session['email'] != email:
+            user = self.users.find_one({'email': email.lower()})
+            if user != None:
+                return jsonify({'error': 'email already exist', 'success': False}), 400
+        self.users.update_one({'email': session['email']}, {'$set': {'email': email, 'password': password, 'cuisine': cusines, 'sensitivity': sensitivities, 'username': username}})
+        session['email'] = email
+        return jsonify({'success': True}), 200
 
 
     #get cusines

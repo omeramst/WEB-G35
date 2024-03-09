@@ -12,8 +12,8 @@ app.secret_key = '123'
 def set_default_session():
     if 'logged_in' not in session:
         session['logged_in'] = False
-    if 'username' not in session:
-        session['username'] = ''
+    if 'email' not in session:
+        session['email'] = ''
 
 ###### Pages
 ## Homepage

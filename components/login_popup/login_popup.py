@@ -19,8 +19,7 @@ def login():
         else:
             return jsonify({'error': 'Incorrect password', 'success': False}), 400
     session['logged_in'] = True
-    print(session['logged_in'])
-    session['username'] = email
+    session['email'] = email
     return jsonify({'success': True}), 200
 
 @login_popup.route('/login')

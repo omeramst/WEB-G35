@@ -21,8 +21,8 @@ loginBtn.addEventListener("click", function (e) {
     submitButton.addEventListener("click", function (e) {
         e.preventDefault();
         //variables
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+        const email = document.getElementById("email1").value;
+        const password = document.getElementById("password1").value;
         //validation
         if (email === '' || password === '') {
             alert('Please fill in all fields');

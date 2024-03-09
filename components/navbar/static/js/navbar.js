@@ -1,4 +1,3 @@
-
 //consts and event listeners
 const logoutBtn = document.getElementById("logout");
 const signupBtn = document.getElementById("signup");
@@ -9,26 +8,27 @@ const recipesbtn = document.getElementById("recipes");
 const ingredientsbut = document.getElementById("ingredients");
 //check if user is logged in
 var loggedIn = false;
-fetch('/login', {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-})
-.then(response => response.json())
-.then(data => {
-    loggedIn = data.logged_in; // Assign the value of data.loggedIn to the loggedIn variable
 
-})
-.catch(error => {
-    console.error('Error:', error);
-});
 //check if user is logged in
-window.onload = function () {
+window.onload = async function () {
     const logoutbutn = document.getElementById("logout");
     const userinfobtn = document.getElementById("userinfo");
     const loginbutn = document.getElementById("login");
     const signupbutn = document.getElementById("signup");
+    await fetch('/login', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            loggedIn = data.logged_in; // Assign the value of data.loggedIn to the loggedIn variable
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     if (loggedIn) {
         loginbutn.style.display = "none";
         signupbutn.style.display = "none";

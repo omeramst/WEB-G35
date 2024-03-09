@@ -8,5 +8,5 @@ navbar = Blueprint('navbar', __name__, static_folder='static', static_url_path='
 @navbar.route('/logout')
 def logout():
     session['logged_in'] = False
-    session['username'] = ''
+    session['email'] = ''
     return redirect('/')

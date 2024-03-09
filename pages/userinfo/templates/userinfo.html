@@ -15,36 +15,33 @@
         <form class="personal">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" class="input" name="username" id="username" placeholder="Username">
+                <input type="text" class="input" name="username" id="username" placeholder="Username"  value={{username}}>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="input" name="email" id="email" placeholder="Email">
+                <input type="email" class="input" name="email" id="email" placeholder="Email" value="{{email}}">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" class="input" name="password" id="password" placeholder="Password">
+                <input type="password" class="input" name="password" id="password" placeholder="Password"  value="{{password}}">
             </div>
         </form>
         <form class="preferences">
-            <label class="label">Select Your Favorite Cuisine:</label>
-            <select class="multipuleSelection" id="favoriteCuisine" name="favoriteCuisine" multiple
-                    onchange="addSelectedItem('favoriteCuisine')">
-                <option class="option" value="italian">Italian</option>
-                <option class="option" value="mexican">Mexican</option>
-                <option class="option" value="japanese">Japanese</option>
-                <option class="option" value="indian">Indian</option>
-            </select>
-            <label class="label">Select Your Food Sensitivities:</label>
-            <select class="multipuleSelection" id="foodSensitivity" name="foodSensitivity" multiple
-                    onchange="addSelectedItem('foodSensitivity')">
-                <option class="option" value="gluten">Gluten</option>
-                <option class="option" value="dairy">Dairy</option>
-                <option class="option" value="nuts">Nuts</option>
-                <option class="option" value="soy">Soy</option>
-                <option class="option" value="shellfish">Shellfish</option>
-            </select>
-        </form>
+    <label class="label">Select Your Favorite Cuisine:</label>
+    <select class="multipuleSelection" id="favoriteCuisine" name="favoriteCuisine" multiple
+            onchange="addSelectedItem('favoriteCuisine')">
+        {% for option in allcuisines %}
+        <option class="option" value="{{option}}" {% if option in cuisine %}selected{% endif %}>{{option.capitalize()}}</option>
+        {% endfor %}
+    </select>
+    <label class="label">Select Your Food Sensitivities:</label>
+    <select class="multipuleSelection" id="foodSensitivity" name="foodSensitivity" multiple
+            onchange="addSelectedItem('foodSensitivity')">
+        {% for option in allsensitivities %}
+        <option class="option" value="{{option}}" {% if option in sensitivity %}selected{% endif %}>{{option.capitalize()}}</option>
+        {% endfor %}
+    </select>
+</form>
     </div>
     <button type="submit" class="submit-btn" id="submit">Change Details</button>
     <text class="message" id="message"></text>
