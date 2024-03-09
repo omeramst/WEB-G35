@@ -100,7 +100,9 @@
             <div class="recipe-card" data-id="{{ recipe.recipe_id }}" data-difficulty="{{ recipe.difficulty }}" data-sensitives="{{ recipe.sensitives|join(', ') }}" data-cuisine="{{ recipe.cuisine }}" data-steps="{{ recipe.steps|join(', ') }}" data-description="{{ recipe.description }}" data-serving="{{ recipe.serving }}" data-ingredients="{{ recipe.ingredients|join(', ') }}">
                 <img src="{{ url_for('recipes.static', filename='media/' + recipe.image) }}" alt="{{ recipe.name }}">
                 <h2 class="recipe-name">{{ recipe.name }}</h2>
-                <button class="view-button">View</button>
+                <a href="recipe?id={{recipe.recipe_id}}">
+                    <button class="view-button">View</button>
+                </a>
             </div>
             {% endfor %}
         </div>
