@@ -65,7 +65,8 @@ let SelectedIng = [];
 
 // Always include salt and pepper
 SelectedIng.push('Salt');
-SelectedIng.push('Pepper');
+SelectedIng.push('Ground Black Pepper');
+SelectedIng.push('Sugar');
 
 // Get all 'Add' buttons
 let buttons = document.querySelectorAll('.IngAddButton');

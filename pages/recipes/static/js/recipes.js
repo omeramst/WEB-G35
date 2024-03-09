@@ -1,6 +1,6 @@
-window.addEventListener('load', function() {
-    createRecipeCards();
-});
+// window.addEventListener('load', function() {
+//     createRecipeCards();
+// });
 
 // Ofri - Get the slider element from the HTML using its id
 var slider = document.getElementById("servingsSlider");
@@ -23,17 +23,16 @@ const recipes = [{
     description: "A simple and tasty strawberry cake, fluffy and creamy.",
     serving: 4,
     ingredients: [
-        "2 strawberries",
-        "1/2 cup sugar",
-        "Ingredient 3",
-        "4 cups flour",
-        "1/4 teaspoon salt",
-        "5 teaspoons baking powder",
-        "1/4 cups butter",
-        "3 cups whipping cream",
-        "1/4 teaspoon vanilla extract"
+        "Strawberry - 2 ",
+        "Sugar - 1/2 cup ",
+        "Flour - 4 cups ",
+        "Salt - 1/4 teaspoon ",
+        "Baking Powder 5 teaspoons ",
+        "Butter - 1/4 cups ",
+        "Whipped Cream - 3 cups",
+        "Vanilla - 1/4 extract teaspoon"
     ],
-    image: "photos/Cake.jpeg",
+    image: "Cake.jpeg",
     steps: [
         "Pick over and hull strawberries. Cut in half or slice, depending on size. Gently crush about a quarter of the berries with a fork to release their juices. Mix with remaining berries and the ½/2 cup of sugar, adding more sugar if necessary. Set aside, covered, for about half an hour to develop flavor.",
         "Preheat oven to 450 degrees.",
@@ -42,27 +41,27 @@ const recipes = [{
         "Beat remaining cream until it thickens. Add vanilla. Beat again just until thick."
     ],
     cuisine: "Dessert",
-    sensitives: ["Gluten-Free", "Nut-Free"],
-    difficulty: "Easy"},
+    sensitives: ["Dairy", "Gluten"],
+    difficulty: "Hard"},
         {
     id: 2,
     name: "Paprika Chicken With Rice",
     description: "A delicious Mediterranean dish with paprika-seasoned chicken and rice.",
     serving: 2,
     ingredients: [
-        "2 chicken breasts",
-        "1 cup basmati rice",
-        "1 tablespoon olive oil",
-        "1 teaspoon paprika",
-        "1/2 teaspoon cumin",
-        "1/4 teaspoon salt",
-        "1/4 teaspoon pepper",
-        "1 teaspoon dijon mustard",
-        "1 teaspoon honey"
+        "Chicken Breast - 2",
+        "Basmati Rice - 1 cup",
+        "Olive Oil - 1 tablespoon",
+        "Sweet Paprika - 1 teaspoon",
+        "Ground Cumin - 1/2 teaspoon",
+        "Salt - 1/4 teaspoon ",
+        "Ground Black Pepper - 1/4 teaspoon",
+        "Dijon Mustard - 1 teaspoon",
+        "Honey - 1 teaspoon"
 
 
     ],
-    image: "photos/Pap-Chicken.png",
+    image: "Pap-Chicken.png",
     steps: [
         "Season chicken breasts with dijon mustard, paprika, cumin, salt, and pepper.",
         "In a large skillet, heat olive oil over medium-high heat.",
@@ -71,52 +70,52 @@ const recipes = [{
         "Add a touch of honey before serving."
     ],
     cuisine: "Mediterranean",
-    sensitives: ["Dairy-Free", "Nut-Free"],
+    sensitives: ["Meat"],
     difficulty: "Easy"
     },
     // other recipes...
 ];
 
-function createRecipeCards() {
-    const recipesGrid = document.querySelector('.recipes-grid');
-
-    recipes.forEach(recipe => {
-        const recipeCard = document.createElement('div');
-        recipeCard.className = 'recipe-card';
-
-        const recipeImage = document.createElement('img');
-        recipeImage.src = recipe.image;
-        recipeCard.appendChild(recipeImage);
-
-        const recipeName = document.createElement('h2');
-        recipeName.className = 'recipe-name';
-        recipeName.textContent = recipe.name;
-        recipeCard.appendChild(recipeName);
-
-        const viewButton = document.createElement('button');
-        viewButton.textContent = 'View';
-        viewButton.className = 'view-button';
-        viewButton.addEventListener('click', () => {
-            localStorage.setItem('recid',recipe.id);
-            window.location.href = `Recepie.html`;  // navigate to new page with recipe ID in URL
-        });
-        recipeCard.appendChild(viewButton);
-
-        recipesGrid.appendChild(recipeCard);
-    });
-}
-
-class Recipe {
-    constructor(id, name, description, serving, ingredients, image, steps, cuisine, sensitives, difficulty) {
-        this.id = id || 0;
-        this.name = name || "";
-        this.description = description || "";
-        this.serving = serving || 0;
-        this.ingredients = ingredients || [];
-        this.image = image || "";
-        this.steps = steps || [];
-        this.cuisine = cuisine || "";
-        this.sensitives = sensitives || [];
-        this.difficulty = difficulty || "";
-    }
-}
+// function createRecipeCards() {
+//     const recipesGrid = document.querySelector('.recipes-grid');
+//
+//     recipes.forEach(recipe => {
+//         const recipeCard = document.createElement('div');
+//         recipeCard.className = 'recipe-card';
+//
+//         const recipeImage = document.createElement('img');
+//         recipeImage.src = recipe.image;
+//         recipeCard.appendChild(recipeImage);
+//
+//         const recipeName = document.createElement('h2');
+//         recipeName.className = 'recipe-name';
+//         recipeName.textContent = recipe.name;
+//         recipeCard.appendChild(recipeName);
+//
+//         const viewButton = document.createElement('button');
+//         viewButton.textContent = 'View';
+//         viewButton.className = 'view-button';
+//         viewButton.addEventListener('click', () => {
+//             localStorage.setItem('recid',recipe.id);
+//             window.location.href = `Recepie.html`;  // navigate to new page with recipe ID in URL
+//         });
+//         recipeCard.appendChild(viewButton);
+//
+//         recipesGrid.appendChild(recipeCard);
+//     });
+// }
+//
+// class Recipe {
+//     constructor(id, name, description, serving, ingredients, image, steps, cuisine, sensitives, difficulty) {
+//         this.id = id || 0;
+//         this.name = name || "";
+//         this.description = description || "";
+//         this.serving = serving || 0;
+//         this.ingredients = ingredients || [];
+//         this.image = image || "";
+//         this.steps = steps || [];
+//         this.cuisine = cuisine || "";
+//         this.sensitives = sensitives || [];
+//         this.difficulty = difficulty || "";
+//     }
+// }

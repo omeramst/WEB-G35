@@ -102,6 +102,12 @@ class DBMongo:
     def get_recipe_by_id(self, id):
         return self.recipes.find_one({'id': id})
 
+    #Recipes Page
+    ## get all recipes
+    def get_recipes(self):
+        return self.recipes.find()
+
+
 
 # Creates an instance for the DBManager class for export.
 DB = DBMongo()
