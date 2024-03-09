@@ -11,6 +11,7 @@ class DBMongo:
     cusiens = None
     sensitivities = None
     ingredients = None
+    recipes = None
 
     # Constructor for the DBManager class - connects to the database and sets the collections
     def __init__(self):
@@ -23,6 +24,7 @@ class DBMongo:
         self.cusiens = DB['Cuisines']
         self.sensitivities = DB['Sensitivities']
         self.ingredients = DB['Ingredients']
+        self.recipes = DB['Recipes']
 
     """users collection functions"""
 
@@ -95,6 +97,10 @@ class DBMongo:
     # get ingredients filtered by type, This can get several types at once
     def get_ingredients_by_type(self, types):
         return self.ingredients.find({'type': {'$in': types}})
+
+    # get recepie by id
+    def get_recipe_by_id(self, id):
+        return self.recipes.find_one({'id': id})
 
 
 # Creates an instance for the DBManager class for export.
