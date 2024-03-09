@@ -142,20 +142,24 @@ document.querySelector('#category-form').addEventListener('submit', function(eve
         let searchText = document.querySelector('.search-input').value.toLowerCase();
         console.log('Search text:', searchText); // Debug line
 
+        // Collect all checked categories
+        let checkedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(input => input.value);
+
+
         // Initialize an array to store the matching cards
         let matchingCards = [];
 
         // Loop through all ingredient cards
-        document.querySelectorAll('.ingredient-card').forEach(card => {
-            // Get the name of the ingredient
-            let ingredientName = card.querySelector('.ingredient-name').textContent.toLowerCase();
+    document.querySelectorAll('.ingredient-card').forEach(card => {
+        // Get the name of the ingredient
+        let ingredientName = card.querySelector('.ingredient-name').textContent.toLowerCase();
 
-            // Check if the name includes the search text
-            if (ingredientName.includes(searchText)) {
-                // If it does, add the card to the matchingCards array
-                matchingCards.push(card);
-            }
-        });
+        // Check if the name includes the search text and if the ingredient type is in the checked categories
+        if (ingredientName.includes(searchText) && (checkedCategories.length === 0 || checkedCategories.includes(card.dataset.type))) {
+            // If it does, add the card to the matchingCards array
+            matchingCards.push(card);
+        }
+    });
 
         console.log('Matching cards:', matchingCards); // Debug line
 
