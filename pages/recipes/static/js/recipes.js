@@ -215,15 +215,17 @@ class Filter {
     }
 }
 
-document.querySelector('#clear-filter').addEventListener('click', function() {
-    let filter = new Filter();
-    filter.clearFilters();
-});
 
 // When the "Apply" button is clicked, create a new instance of the Filter class, collect the user's choices, and apply these choices to the recipe cards
 document.querySelector('.filter-apply-button:not(.favorite-button)').addEventListener('click', function() {
     let filter = new Filter();
     filter.collectFilters();
     filter.applyFilters();
+});
+
+// When the "Clear" button is clicked, create a new instance of the Filter class and clear the user's choices
+document.querySelector('#clear-filter').addEventListener('click', function() {
+    let filter = new Filter();
+    filter.clearFilters();
 });
 
