@@ -1,111 +1,3 @@
-// window.addEventListener('load', function() {
-//     createRecipeCards();
-// });
-
-// Ofri - The following code is responsible for the autofill of the grid using recipe cards.
-//
-// const recipes = [{
-//     id: 1,
-//     name: "Simple Strawberry Cake",
-//     description: "A simple and tasty strawberry cake, fluffy and creamy.",
-//     serving: 4,
-//     ingredients: [
-//         "Strawberry - 2 ",
-//         "Sugar - 1/2 cup ",
-//         "Flour - 4 cups ",
-//         "Salt - 1/4 teaspoon ",
-//         "Baking Powder 5 teaspoons ",
-//         "Butter - 1/4 cups ",
-//         "Whipped Cream - 3 cups",
-//         "Vanilla - 1/4 extract teaspoon"
-//     ],
-//     image: "Cake.jpeg",
-//     steps: [
-//         "Pick over and hull strawberries. Cut in half or slice, depending on size. Gently crush about a quarter of the berries with a fork to release their juices. Mix with remaining berries and the ½/2 cup of sugar, adding more sugar if necessary. Set aside, covered, for about half an hour to develop flavor.",
-//         "Preheat oven to 450 degrees.",
-//         "Into a large mixing bowl, sift together flour, 3 tablespoons sugar, salt and baking powder. Add 3 cup of softened butter, and rub into dry ingredients as for pastry. Add 1 ¼4 cups cream, and mix to a soft dough. Knead the dough for one minute on a lightly floured pastry board, then roll it out to about ½-inch thickness. Using a 3-inch biscuit cutter, cut an even number of rounds - 2 rounds per serving.",
-//         "Use a little of the butter to grease a baking sheet. Place half the rounds on it. Melt remaining butter and brush a little on the rounds; place remaining rounds on top. Bake for 10 to 15 minutes, or until golden brown.",
-//         "Beat remaining cream until it thickens. Add vanilla. Beat again just until thick."
-//     ],
-//     cuisine: "Dessert",
-//     sensitives: ["Dairy", "Gluten"],
-//     difficulty: "Hard"},
-//         {
-//     id: 2,
-//     name: "Paprika Chicken With Rice",
-//     description: "A delicious Mediterranean dish with paprika-seasoned chicken and rice.",
-//     serving: 2,
-//     ingredients: [
-//         "Chicken Breast - 2",
-//         "Basmati Rice - 1 cup",
-//         "Olive Oil - 1 tablespoon",
-//         "Sweet Paprika - 1 teaspoon",
-//         "Ground Cumin - 1/2 teaspoon",
-//         "Salt - 1/4 teaspoon ",
-//         "Ground Black Pepper - 1/4 teaspoon",
-//         "Dijon Mustard - 1 teaspoon",
-//         "Honey - 1 teaspoon"
-//
-//
-//     ],
-//     image: "Pap-Chicken.png",
-//     steps: [
-//         "Season chicken breasts with dijon mustard, paprika, cumin, salt, and pepper.",
-//         "In a large skillet, heat olive oil over medium-high heat.",
-//         "Add chicken breasts and cook until browned on both sides and cooked through.",
-//         "Remove chicken from the skillet and set aside.",
-//         "Add a touch of honey before serving."
-//     ],
-//     cuisine: "Mediterranean",
-//     sensitives: ["Meat"],
-//     difficulty: "Easy"
-//     },
-//     // other recipes...
-// ];
-
-// function createRecipeCards() {
-//     const recipesGrid = document.querySelector('.recipes-grid');
-//
-//     recipes.forEach(recipe => {
-//         const recipeCard = document.createElement('div');
-//         recipeCard.className = 'recipe-card';
-//
-//         const recipeImage = document.createElement('img');
-//         recipeImage.src = recipe.image;
-//         recipeCard.appendChild(recipeImage);
-//
-//         const recipeName = document.createElement('h2');
-//         recipeName.className = 'recipe-name';
-//         recipeName.textContent = recipe.name;
-//         recipeCard.appendChild(recipeName);
-//
-//         const viewButton = document.createElement('button');
-//         viewButton.textContent = 'View';
-//         viewButton.className = 'view-button';
-//         viewButton.addEventListener('click', () => {
-//             localStorage.setItem('recid',recipe.id);
-//             window.location.href = `Recepie.html`;  // navigate to new page with recipe ID in URL
-//         });
-//         recipeCard.appendChild(viewButton);
-//
-//         recipesGrid.appendChild(recipeCard);
-//     });
-// }
-//
-// class Recipe {
-//     constructor(id, name, description, serving, ingredients, image, steps, cuisine, sensitives, difficulty) {
-//         this.id = id || 0;
-//         this.name = name || "";
-//         this.description = description || "";
-//         this.serving = serving || 0;
-//         this.ingredients = ingredients || [];
-//         this.image = image || "";
-//         this.steps = steps || [];
-//         this.cuisine = cuisine || "";
-//         this.sensitives = sensitives || [];
-//         this.difficulty = difficulty || "";
-//     }
-// }
 
 // Ofri - Get the slider element from the HTML using its id
 var slider = document.getElementById("servingsSlider");
@@ -118,39 +10,6 @@ slider.oninput = function () {
     // Ofri - When the slider's value changes, update the output element's text to match the slider's current value
     output.innerHTML = this.value;
 }
-
-// The filters part:
-
-// document.querySelector('.filter-apply-button:not(.favorite-button)').addEventListener('click', function() {
-//     // Collect all checked checkboxes
-//     let checkedDifficulties = Array.from(document.querySelectorAll('input[name="Difficulty"]:checked')).map(input => input.value);
-//     let checkedCuisines = Array.from(document.querySelectorAll('input[name="Cuisine"]:checked')).map(input => input.value);
-//     let checkedSensitivities = Array.from(document.querySelectorAll('input[name="Sensitivity"]:checked')).map(input => input.value);
-//
-//     // Get the value of the slider
-//     let servingsValue = document.querySelector('#servingsSlider').value;
-//
-//     // Loop through all recipe cards
-//     document.querySelectorAll('.recipe-card').forEach(card => {
-//         // Get the data attributes of the card
-//         let cardDifficulty = card.dataset.difficulty;
-//         let cardCuisine = card.dataset.cuisine;
-//         let cardSensitivities = card.dataset.sensitives.split(', ');
-//         let cardServings = card.dataset.serving;
-//
-//         // Check if the card matches the user's choices
-//         if (checkedDifficulties.includes(cardDifficulty) &&
-//             checkedCuisines.includes(cardCuisine) &&
-//             !cardSensitivities.some(sensitivity => checkedSensitivities.includes(sensitivity)) &&
-//             parseInt(cardServings) >= parseInt(servingsValue)) {
-//             // If it does, display the card
-//             card.style.display = 'block';
-//         } else {
-//             // If it doesn't, hide the card
-//             card.style.display = 'none';
-//         }
-//     });
-// });
 
 class Filter {
     constructor() {
@@ -229,3 +88,34 @@ document.querySelector('#clear-filter').addEventListener('click', function() {
     filter.clearFilters();
 });
 
+
+document.querySelector('.favorite-button').addEventListener('click', async function (e) {
+    e.preventDefault();
+    //checks if the user is logged in
+    if (loggedIn) {
+        //gets the saved recipes from the user
+        await fetch('api/savedrecipes', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        }).then(response => response.json()).then(data => {
+            if (data.success) {
+                //gets the saved recipes from the user
+                console.log(data.saved);
+                const saved = data.saved
+                const filter = new Filter();
+                filter.clearFilters();
+                document.querySelectorAll('.recipe-card').forEach(card => {
+                    if (saved.includes(card.dataset.id)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            } else {
+                alert("there was an error getting the saved recipes, please try again later")
+            }
+        });
+    } else {
+        alert("You must be logged in to use this feature")
+    }
+});
