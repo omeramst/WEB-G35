@@ -51,26 +51,24 @@ const recipes = [{
     serving: 2,
     ingredients: [
         "2 chicken breasts",
-        "1 cup rice",
+        "1 cup basmati rice",
         "1 tablespoon olive oil",
-        "1 onion, diced",
-        "2 cloves garlic, minced",
-        "1 red bell pepper, chopped",
         "1 teaspoon paprika",
         "1/2 teaspoon cumin",
-        "Salt and pepper to taste",
-        "Fresh parsley for garnish"
+        "1/4 teaspoon salt",
+        "1/4 teaspoon pepper",
+        "1 teaspoon dijon mustard",
+        "1 teaspoon honey"
+
+
     ],
     image: "photos/Pap-Chicken.png",
     steps: [
-        "Season chicken breasts with paprika, cumin, salt, and pepper.",
+        "Season chicken breasts with dijon mustard, paprika, cumin, salt, and pepper.",
         "In a large skillet, heat olive oil over medium-high heat.",
         "Add chicken breasts and cook until browned on both sides and cooked through.",
         "Remove chicken from the skillet and set aside.",
-        "In the same skillet, add diced onion, minced garlic, and chopped red bell pepper. Sauté until vegetables are tender.",
-        "Add rice to the skillet and cook, stirring, for a couple of minutes.",
-        "Return the cooked chicken to the skillet and mix with the rice and vegetables.",
-        "Garnish with fresh parsley before serving."
+        "Add a touch of honey before serving."
     ],
     cuisine: "Mediterranean",
     sensitives: ["Dairy-Free", "Nut-Free"],

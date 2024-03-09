@@ -63,6 +63,10 @@
 // Create an empty array to store the chosen ingredients
 let SelectedIng = [];
 
+// Always include salt and pepper
+SelectedIng.push('Salt');
+SelectedIng.push('Pepper');
+
 // Get all 'Add' buttons
 let buttons = document.querySelectorAll('.IngAddButton');
 
@@ -101,47 +105,73 @@ document.querySelector('#category-form').addEventListener('submit', function(eve
     // Collect all checked categories
     let checkedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(input => input.value);
 
-    // Send a request to the server with the selected categories
-    fetch('/ingredients', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({categories: checkedCategories}),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-          // Clear the ingredient grid
-    let ingredientGrid = document.querySelector('.ingredient-grid');
-    ingredientGrid.innerHTML = '';
+    // If no categories are checked, show all ingredients
+    if (checkedCategories.length === 0) {
+        document.querySelectorAll('.ingredient-card').forEach(card => card.style.display = 'block');
+        return;
+    }
 
-    // Create a new card for each ingredient and append it to the grid
-        data.forEach(ingredient => {  // Changed from data.ingredients.forEach to data.forEach
-        const ingredientCard = document.createElement('div');
-        ingredientCard.classList.add('ingredient-card');
-        ingredientCard.dataset.type = ingredient.type;
-
-        const ingredientImage = document.createElement('img');
-        ingredientImage.src = ingredient.image;
-        ingredientImage.alt = ingredient.name;
-
-        const ingredientName = document.createElement('h3');
-        ingredientName.textContent = ingredient.name;
-        ingredientName.classList.add('ingredient-name');
-
-        const applyButton = document.createElement('button');
-        applyButton.textContent = 'Add';
-        applyButton.classList.add('IngAddButton');
-
-        ingredientCard.append(ingredientImage, ingredientName, applyButton);
-        ingredientGrid.append(ingredientCard);
+    // If there are checked categories, show only those ingredients
+    document.querySelectorAll('.ingredient-card').forEach(card => {
+        if (checkedCategories.includes(card.dataset.type)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
     });
 
-    })
-    .catch(error => {
-        console.error('There was a problem with the fetch operation: ', error);
     });
 
+
+    // This is the clear filter button listener and action that will clear the filter and show all the ingredients again
+    document.querySelector('#clear-filter').addEventListener('click', function() {
+    // Uncheck all checkboxes
+    document.querySelectorAll('input[name="category"]:checked').forEach(input => input.checked = false);
+
+    // Show all ingredient cards
+    document.querySelectorAll('.ingredient-card').forEach(card => card.style.display = 'block');
 });
+
+    // This is the search button listener and action that will search for the ingredient by the name
+
+
+    document.querySelector('.search-button').addEventListener('click', function() {
+         console.log('Search button clicked'); // Debug line
+        // Get the search text
+        let searchText = document.querySelector('.search-input').value.toLowerCase();
+        console.log('Search text:', searchText); // Debug line
+
+        // Initialize an array to store the matching cards
+        let matchingCards = [];
+
+        // Loop through all ingredient cards
+        document.querySelectorAll('.ingredient-card').forEach(card => {
+            // Get the name of the ingredient
+            let ingredientName = card.querySelector('.ingredient-name').textContent.toLowerCase();
+
+            // Check if the name includes the search text
+            if (ingredientName.includes(searchText)) {
+                // If it does, add the card to the matchingCards array
+                matchingCards.push(card);
+            }
+        });
+
+        console.log('Matching cards:', matchingCards); // Debug line
+
+        // If no cards match the search text, show a message
+        if (matchingCards.length === 0) {
+            alert('No ingredients found that match user input');
+        } else {
+            // If there are matching cards, display them and hide the rest
+            document.querySelectorAll('.ingredient-card').forEach(card => {
+                if (matchingCards.includes(card)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    });
+
+
 

@@ -27,7 +27,7 @@
 <div class="main-content">
     <div class="filter-container">
         <h3 class="filter-header">
-            <img src="photos/List_2.png" alt=""> Categories
+            <img src="{{ url_for('ingredients.static', filename='media/photos/List_2.png') }}" alt=""> Categories
         </h3>
         <form id="category-form">
             <label>
@@ -61,8 +61,10 @@
             <hr class="line">
             <button class="filter-apply-button" type="submit">Apply</button>
         </form>
-
             <br>
+            <br>
+            <br>
+             <button class="filter-apply-button" id="clear-filter" type="button">Clear Filters</button>
             <br>
             <br>
             <br>
