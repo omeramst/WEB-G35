@@ -1,4 +1,3 @@
-
 // Ofri - Get the slider element from the HTML using its id
 var slider = document.getElementById("servingsSlider");
 
@@ -10,6 +9,13 @@ slider.oninput = function () {
     // Ofri - When the slider's value changes, update the output element's text to match the slider's current value
     output.innerHTML = this.value;
 }
+
+//collects the user preferences and applies them to the recipe cards
+window.addEventListener('load', async function (e) {
+    const filter = new Filter();
+    filter.collectFilters();
+    filter.applyFilters();
+    });
 
 class Filter {
     constructor() {
@@ -76,19 +82,19 @@ class Filter {
 
 
 // When the "Apply" button is clicked, create a new instance of the Filter class, collect the user's choices, and apply these choices to the recipe cards
-document.querySelector('.filter-apply-button:not(.favorite-button)').addEventListener('click', function() {
+document.querySelector('.filter-apply-button:not(.favorite-button)').addEventListener('click', function () {
     let filter = new Filter();
     filter.collectFilters();
     filter.applyFilters();
 });
 
 // When the "Clear" button is clicked, create a new instance of the Filter class and clear the user's choices
-document.querySelector('#clear-filter').addEventListener('click', function() {
+document.querySelector('#clear-filter').addEventListener('click', function () {
     let filter = new Filter();
     filter.clearFilters();
 });
 
-
+// When the "Favorite" button is clicked, create a new instance of the Filter class, collect the user's choices, and apply these choices to the recipe cards
 document.querySelector('.favorite-button').addEventListener('click', async function (e) {
     e.preventDefault();
     //checks if the user is logged in

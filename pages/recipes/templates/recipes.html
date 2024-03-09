@@ -36,57 +36,26 @@
         </div>
         <hr class="line">
         <h3 class="filter-headers">Cuisine</h3>
+        {%for cuisine in cuisines%}
         <label>
-            <input type="checkbox" name="Cuisine" value="Italian"> Italian
+            <input type="checkbox" name="Cuisine" value="{{cuisine}}" {% if cuisine in usercusine %}checked{% endif %}>
+            {{cuisine}}
         </label>
         <br>
-        <label>
-            <input type="checkbox" name="Cuisine" value="Asian"> Asian
-        </label>
-        <br>
-        <label>
-            <input type="checkbox" name="Cuisine" value="Mediterranean"> Mediterranean
-        </label>
-        <br>
-        <label>
-            <input type="checkbox" name="Cuisine" value="General"> General
-        </label>
-        <br>
-        <label>
-            <input type="checkbox" name="Cuisine" value="Dessert"> Dessert
-        </label>
+        {%endfor%}
         <hr class="line">
         <h3 class="filter-headers">Sensitivities</h3>
+        {%for sensitivity in sensitivities%}
         <label>
-            <input type="checkbox" name="Sensitivity" value="Meat"> Meat
+            <input type="checkbox" name="Sensitivity" value="{{sensitivity}}" {% if sensitivity in usersensitivity
+                   %}checked{% endif %}> {{sensitivity}}
         </label>
         <br>
-        <label>
-            <input type="checkbox" name="Sensitivity" value="Gluten"> Gluten
-        </label>
-        <br>
-        <label>
-            <input type="checkbox" name="Sensitivity" value="Dairy"> Dairy
-        </label>
-        <br>
-        <label>
-            <input type="checkbox" name="Sensitivity" value="Nuts"> Nuts
-        </label>
-        <br>
-        <label>
-            <input type="checkbox" name="Sensitivity" value="Soy"> Soy
-        </label>
-        <br>
-        <label>
-            <input type="checkbox" name="Sensitivity" value="Shellfish"> Shellfish
-        </label>
-        <br>
+        {%endfor%}
         <hr class="line">
         <button class="filter-apply-button" type="button">Apply</button>
         <hr class="line">
         <button class="filter-apply-button" id="clear-filter" type="button">Clear Filters</button>
-
-
 
 
     </div>
@@ -98,7 +67,10 @@
         <br>
         <div class="recipes-grid">
             {% for recipe in recipes %}
-            <div class="recipe-card" data-id="{{ recipe.recipe_id }}" data-difficulty="{{ recipe.difficulty }}" data-sensitives="{{ recipe.sensitives|join(', ') }}" data-cuisine="{{ recipe.cuisine }}" data-steps="{{ recipe.steps|join(', ') }}" data-description="{{ recipe.description }}" data-serving="{{ recipe.serving }}" data-ingredients="{{ recipe.ingredients|join(', ') }}">
+            <div class="recipe-card" data-id="{{ recipe.recipe_id }}" data-difficulty="{{ recipe.difficulty }}"
+                 data-sensitives="{{ recipe.sensitives|join(', ') }}" data-cuisine="{{ recipe.cuisine }}"
+                 data-steps="{{ recipe.steps|join(', ') }}" data-description="{{ recipe.description }}"
+                 data-serving="{{ recipe.serving }}" data-ingredients="{{ recipe.ingredients|join(', ') }}">
                 <img src="{{ url_for('recipes.static', filename='media/' + recipe.image) }}" alt="{{ recipe.name }}">
                 <h2 class="recipe-name">{{ recipe.name }}</h2>
                 <a href="recipe?id={{recipe.recipe_id}}">
