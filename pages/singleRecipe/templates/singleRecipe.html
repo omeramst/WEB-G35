@@ -1,31 +1,39 @@
 {% extends 'base.html' %}
 
-{% set page_head_title = 'Recipe' %}
+{% set page_head_title = name %}
 
 {% block page_head_css %}
 <link rel="stylesheet" href="{{ url_for('singleRecipe.static', filename='css/singleRecipe.css') }}"/>
 {% endblock %}
 
 
-
 {% block page_body_content %}
 <div class="RecipiePage">
     <div class="infoContainer">
-        <h1 class="infoContainer" id="RecepieHeader">Recepie header here</h1>
-        <p class="infoContainer" id="RecepieDescription">Description here</p>
-        <text class="infoContainer" id="RecepieServing"><strong>Serving: </strong>number serving here</text>
+        <h1 class="infoContainer" id="RecepieHeader">{{name}}</h1>
+        <p class="infoContainer" id="RecepieDescription">{{description}}</p>
+        <text class="infoContainer" id="RecepieServing"><strong>Serving: </strong>{{servings}}</text>
         <h4 class="infoContainer" id="ingredientTitle">Ingredients:</h4>
         <ul class="infoContainer" id="RecepieIngredients">
+            {% for ingredient in ingredients %}
+            <li class="infoContainer">{{ ingredient }}</li>
+            {% endfor %}
         </ul>
     </div>
     <div class="Recipie">
-        <img class="Recipie" id="RecepieImage" src="source here" alt="Recepie">
+        <img class="Recipie" id="RecepieImage" src="{{ url_for('singleRecipe.static', filename='media/' + image) }}"
+             alt="Recepie">
         <div class="Recipie save">
             <text class="Recipie save" id="save"><strong>Save To Favorites</strong></text>
-            <button class="Recipie save star" id="FavoriteButton"></button>
+            <button class="Recipie save star {{ 'checked' if saved else '' }}" id="FavoriteButton"></button>
         </div>
         <div class="RecipieSteps" id="recipeSteps">
-            <!-- Steps will be added dynamically using JavaScript -->
+            {% for step in steps %}
+            <div class="RecipieStep">
+                <h2 class="RecipieStep">Step {{ loop.index }}</h2>
+                <p class="RecipieStep">{{ step }}</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

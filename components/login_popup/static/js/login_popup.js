@@ -49,6 +49,7 @@ loginBtn.addEventListener("click", function (e) {
         .then(data => {
             if (data.success) {
                 //navbar display changes
+                loggedIn = true;
                 popup.style.display = "none";
                 const logoutbutn = document.getElementById("logout");
                 const userinfobtn = document.getElementById("userinfo");
@@ -58,6 +59,7 @@ loginBtn.addEventListener("click", function (e) {
                 signupbutn.style.display = "none";
                 logoutbutn.style.display = "block";
                 userinfobtn.style.display = "block";
+                window.location.reload();
             } else {
                 alert(data.error);
             }
