@@ -19,8 +19,8 @@ def load_recipes():
     if session['logged_in']:
         usercusine = DB.get_logged_user()['cuisine']
         usersensitivity = DB.get_logged_user()['sensitivity']
-        return render_template('recipes.html', recipes=recipes, sensitivities=sensitivities, cuisines=cuisines, usercusine=usercusine, usersensitivity=usersensitivity)
-    return render_template('recipes.html', recipes=recipes, sensitivities=sensitivities, cuisines=cuisines, usercusine=[], usersensitivity=[])
+        return render_template('recipes.html', recipes=recipes, sensitivities=sensitivities, cuisines=cuisines, usercusine=usercusine, usersensitivity=usersensitivity, no_recipes_found=False)
+    return render_template('recipes.html', recipes=recipes, sensitivities=sensitivities, cuisines=cuisines, usercusine=[], usersensitivity=[], no_recipes_found=False)
 
 @recipes.route('/api/savedrecipes', methods=['GET'])
 def saved_recipes():
@@ -46,7 +46,14 @@ def show_suitable_recipes():
     print(f"Received selected ingredients: {selected_ingredients}")  # Print the received ingredients
     suitable_recipes = DB.get_suitable_recipes(selected_ingredients)
     print(f"Returning suitable recipes: {suitable_recipes}")  # Print the suitable recipes
-    return render_template('recipes.html', recipes=suitable_recipes)
+
+    # Check if there are any suitable recipes
+    if suitable_recipes:
+        # If there are suitable recipes, render the recipes.html template with the suitable recipes
+        return render_template('recipes.html', recipes=suitable_recipes, no_recipes_found=False)
+    else:
+        # If there are no suitable recipes, render the recipes.html template with no_recipes_found set to True
+        return render_template('recipes.html', recipes=[], no_recipes_found=True)
 
 
 # This is the code that is used to store the selected ingredients in the session

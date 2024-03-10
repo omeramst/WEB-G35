@@ -248,3 +248,40 @@ label {
 button {
     cursor: pointer;
 }
+
+#no-recipes-message {
+    font-family: Lexend, Futura;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 48px;
+    color: #171A1FFF;
+}
+
+.links-to-redirect {
+    font-family: Lexend, Futura;
+    font-size: 24px;
+    font-weight: 400;
+    color: #171A1FFF;
+    padding: 10px;
+
+}
+
+.alert-heading {
+    font-family: Lexend, Futura;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 48px;
+    color: #171A1FFF;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+
+
+
+.alert-warning{
+    text-align: center;
+
+}
