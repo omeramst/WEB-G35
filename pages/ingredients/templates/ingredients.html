@@ -7,7 +7,6 @@
 {% endblock %}
 
 
-
 {% block page_body_content %}
 <div class="ingredient-top-area">
     <!--         Ofri - class="ingredient-top-area" Includes the search bar, the ingredient header and the ingredient cards-->
@@ -26,8 +25,8 @@
 </div>
 
 <div class="info-box">
-        <p>Choose ingredients that you have in your pantry! Click "Show Recipes" and find recipes that suit your choice</p>
-    </div>
+    <p>Choose ingredients that you have in your pantry! Click "Show Recipes" and find recipes that suit your choice</p>
+</div>
 
 <div class="main-content">
     <div class="filter-container">
@@ -35,46 +34,22 @@
             <img src="{{ url_for('ingredients.static', filename='media/photos/List_2.png') }}" alt=""> Categories
         </h3>
         <form id="category-form">
+            {% for category in ingredients_categories %}
             <label>
-                <input type="checkbox" name="category" value="Vegetables"> Vegetables
+                <input type="checkbox" name="category" value="{{category}}"> {{category}}
             </label>
             <br>
-            <label>
-                <input type="checkbox" name="category" value="Fruits"> Fruits
-            </label>
-            <br>
-            <label>
-                <input type="checkbox" name="category" value="Spices"> Spices
-            </label>
-            <br>
-            <label>
-                <input type="checkbox" name="category" value="Fish"> Fish
-            </label>
-            <br>
-            <label>
-                <input type="checkbox" name="category" value="Meat"> Meat
-            </label>
-            <br>
-            <label>
-                <input type="checkbox" name="category" value="Dairy & Eggs"> Dairy & Eggs
-            </label>
-            <br>
-            <label>
-                <input type="checkbox" name="category" value="Pantry Essentials"> Pantry Essentials
-            </label>
-            <br>
+            {% endfor %}
+
             <hr class="line">
             <button class="filter-apply-button" type="submit">Apply</button>
         </form>
-            <br>
-            <br>
-            <br>
-             <button class="filter-apply-button" id="clear-filter" type="button">Clear Filters</button>
-            <br>
-            <br>
-            <br>
-            <br>
-            <button class="filter-apply-button" id="Show Recipes" type="button">Show Recipes</button>
+        <br>
+        <br>
+        <button class="filter-apply-button" id="clear-filter" type="button">Clear Filters</button>
+        <br>
+        <br>
+        <button class="filter-apply-button" id="Show Recipes" type="button">Show Recipes</button>
 
     </div>
 
@@ -82,11 +57,12 @@
         <!-- Ofri - Ingredient cards should be added here by the Script I will build -->
         {% for ingredient in ingredients %}
         <div class="ingredient-card" data-type="{{ ingredient.type }}">
-            <img src="{{ url_for('ingredients.static', filename='media/photos/' + ingredient.image) }}" alt="{{ ingredient.name }}">
+            <img src="{{ url_for('ingredients.static', filename='media/photos/' + ingredient.image) }}"
+                 alt="{{ ingredient.name }}">
             <h3 class="ingredient-name">{{ ingredient.name }}</h3>
             <button class="IngAddButton">Add</button>
         </div>
-    {% endfor %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

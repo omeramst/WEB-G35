@@ -165,7 +165,7 @@ document.querySelector('#category-form').addEventListener('submit', function(eve
 
         // If no cards match the search text, show a message
         if (matchingCards.length === 0) {
-            alert('No ingredients found that match user input');
+            alert('No ingredients found that match user input and applied filters.');
         } else {
             // If there are matching cards, display them and hide the rest
             document.querySelectorAll('.ingredient-card').forEach(card => {

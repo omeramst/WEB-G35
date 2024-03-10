@@ -14,7 +14,8 @@ ingredients = Blueprint(
 @ingredients.route('/ingredients')
 def load_ingredients():
     ingredients = DB.get_ingredients()
-    return render_template('ingredients.html', ingredients=ingredients)
+    ingredients_categories = DB.get_ingredients_categories()
+    return render_template('ingredients.html', ingredients=ingredients, ingredients_categories=ingredients_categories)
 
 
 

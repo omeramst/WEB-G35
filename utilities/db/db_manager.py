@@ -12,6 +12,7 @@ class DBMongo:
     sensitivities = None
     ingredients = None
     recipes = None
+    ingredients_categories = None
 
     # Constructor for the DBManager class - connects to the database and sets the collections
     def __init__(self):
@@ -25,6 +26,7 @@ class DBMongo:
         self.sensitivities = DB['Sensitivities']
         self.ingredients = DB['Ingredients']
         self.recipes = DB['Recipes']
+        self.ingredients_categories = DB['Categories']
 
     """users collection functions"""
 
@@ -121,6 +123,10 @@ class DBMongo:
     ## get all recipes
     def get_recipes(self):
         return self.recipes.find()
+
+    #get all ingredients categories
+    def get_ingredients_categories(self):
+        return self.ingredients_categories.distinct('value')
 
 
 
