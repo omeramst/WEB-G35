@@ -23,7 +23,9 @@
 
 
     <body>
+        {% block navbar %}
         {% include 'navbar.html' %}
+        {% endblock %}
         {% block page_body_content %}
 
             {# Header #}
@@ -35,7 +37,9 @@
             {% endblock %}
         {% endblock %}
 
+        {% block login_pop%}
         {% include 'login_popup.html' %}
+        {% endblock %}
 
         {# JS #}
         <script src="{{ url_for('static', filename='js/base.js') }}"></script>

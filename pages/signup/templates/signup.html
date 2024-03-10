@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cookify</title>
-    <link rel="stylesheet" href="{{ url_for('signup.static', filename='css/signup.css') }}"/>
-    <link rel="icon" href="{{ url_for('static', filename='media/img/favicon/logo.jpeg') }}"/>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% set page_head_title = 'signup' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('signup.static', filename='css/signup.css') }}"/>
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block page_body_content %}
 <div class="container">
     <div class="page">
         <img class="logo" src="{{ url_for('signup.static', filename='media/logo.png') }}" alt="logo">
@@ -56,6 +59,11 @@
     </img>
 </div>
 </div>
+{% endblock %}
+
+{% block login_pop%}
+{% endblock %}
+
+{% block page_body_js %}
 <script src="{{ url_for('signup.static', filename='js/signup.js') }}"></script>
-</body>
-</html>
+{% endblock %}

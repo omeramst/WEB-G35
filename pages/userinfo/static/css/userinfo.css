@@ -8,8 +8,10 @@ body {
     margin: 0;
     padding: 0;
 }
+
 /*user info*/
 .infoForm {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,6 +43,7 @@ body {
 .form-group {
     margin: 15px;
 }
+
 .label {
     margin-bottom: 10px;
 }
@@ -51,6 +54,7 @@ body {
     margin: 5px;
     box-sizing: border-box;
 }
+
 .submit-btn {
     padding: 10px;
     background-color: #4CAF50;
@@ -59,16 +63,21 @@ body {
     cursor: pointer;
     border-radius: 3px;
 }
+
 .submit-btn:hover {
     background-color: #45a049;
 }
+
 .btn {
     display: flex;
     justify-content: center; /* Center the button horizontally */
     margin-top: 15px;
 }
+
 /*message*/
 .message {
+    position: absolute;
+    bottom: 10px; /* Position at the bottom */
     display: none;
     margin-top: 10px;
     padding: 10px;
@@ -78,8 +87,9 @@ body {
     background-color: #3498db; /* Green background color */
     border-radius: 5px;
     text-align: center;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 10s ease-in-out;
 }
+
 @keyframes fadeOut {
     0% {
         opacity: 1;
@@ -90,6 +100,6 @@ body {
 }
 
 .message.hide {
-    animation: fadeOut 1s ease-in-out;
+    animation: fadeOut 2s ease-in-out;
     animation-fill-mode: forwards;
 }
