@@ -37,3 +37,21 @@ def user_preferences():
         return jsonify({'cuisine': user['cuisine'], 'sensitivity': user['sensitivity'], 'success': True}), 200
     except:
         return jsonify({'error': 'error in getting user preferences', 'success': False}), 400
+
+
+# This is the code that is used to get the suitable recipes and render the recipes.html page with the suitable recipes
+@recipes.route('/showSuitableRecipes', methods=['GET'])
+def show_suitable_recipes():
+    selected_ingredients = session.get('selected_ingredients')
+    print(f"Received selected ingredients: {selected_ingredients}")  # Print the received ingredients
+    suitable_recipes = DB.get_suitable_recipes(selected_ingredients)
+    print(f"Returning suitable recipes: {suitable_recipes}")  # Print the suitable recipes
+    return render_template('recipes.html', recipes=suitable_recipes)
+
+
+# This is the code that is used to store the selected ingredients in the session
+@recipes.route('/storeSelectedIngredients', methods=['POST'])
+def store_selected_ingredients():
+    selected_ingredients = request.json
+    session['selected_ingredients'] = selected_ingredients
+    return '', 204

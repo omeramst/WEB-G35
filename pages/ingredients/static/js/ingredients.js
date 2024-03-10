@@ -180,3 +180,26 @@ document.querySelector('#category-form').addEventListener('submit', function(eve
 
 
 
+    // The main event listener for the 'Show Recipes' button. It will send the selected ingredients to the server and redirect the user to the /showSuitableRecipes page
+document.getElementById('Show_Recipes').addEventListener('click', function() {
+    fetch('/storeSelectedIngredients', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(SelectedIng),
+    })
+    .then(response => {
+        if (response.ok) {
+            // Redirect the user to the /showSuitableRecipes page
+            window.location.href = '/showSuitableRecipes';
+        } else {
+            console.error('Error:', response.statusText);
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
+
+

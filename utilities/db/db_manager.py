@@ -128,6 +128,18 @@ class DBMongo:
     def get_ingredients_categories(self):
         return self.ingredients_categories.distinct('value')
 
+    # get suitable recipes
+    def get_suitable_recipes(self, selected_ingredients):
+        print(f"Selected ingredients: {selected_ingredients}")  # Print the selected ingredients
+        suitable_recipes = []
+        all_recipes = self.recipes.find()
+        for recipe in all_recipes:
+            recipe_ingredients = [ingredient.split(' - ')[0] for ingredient in recipe['ingredients']]
+            if all(ingredient in selected_ingredients for ingredient in recipe_ingredients):
+                suitable_recipes.append(recipe)
+        print(f"Suitable recipes: {suitable_recipes}")  # Print the suitable recipes
+        return suitable_recipes
+
 
 
 # Creates an instance for the DBManager class for export.

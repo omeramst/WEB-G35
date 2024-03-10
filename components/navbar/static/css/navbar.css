@@ -75,3 +75,8 @@
 .navbarItem {
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
+.navbar-line {
+    border-top: 2px solid #A9A9B9;
+    margin: 8px 0;
+}
