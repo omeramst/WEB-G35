@@ -13,7 +13,7 @@
 <div class="container">
     <div class="page">
         <img class="logo" src="{{ url_for('signup.static', filename='media/logo.png') }}" alt="logo">
-        <form class="signUpForm form1">
+        <form class="signUpForm form1" method="POST" action="/signup" >
             <h1 class="signHeader">Sign Up</h1>
             <text class="textheader">Fill User Name</text>
             <input type="text" class="input" name="username" id="username" placeholder="Username">
@@ -27,7 +27,7 @@
             <button type="submit" id="btn">Next</button>
             <p>Already have an account? <a href="homepage">Home page</a></p>
         </form>
-        <form class="signUpForm form2">
+        <form class="signUpForm form2" method="POST" action="/signup">
             <h1 class="signHeader">Additional Information</h1>
             <label class="label">Select Your Favorite Cuisine:</label>
             <select class="multipuleSelection" id="favoriteCuisine" name="favoriteCuisine" multiple>

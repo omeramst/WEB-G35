@@ -4,7 +4,7 @@
 <div id="loginPopup" class="popup">
     <div class="popup-content">
         <span id="closePopup" class="close-btn">&times;</span>
-        <form class="loginForm">
+        <form class="loginForm" method="POST" action="/login">
              <img class="logo" src="{{ url_for('login_popup.static', filename='media/logo.png') }}" alt="logo">
                 <h1 class="LoginHeader">Login</h1>
                 <text class="textheader">Fill Email</text>
