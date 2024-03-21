@@ -94,7 +94,7 @@ class DBMongo:
     # Ingredients Page
     # get all ingredients
     def get_ingredients(self):
-        return self.ingredients.find()
+        return self.ingredients.find().sort('name')
 
     # get ingredients filtered by type, This can get several types at once
     def get_ingredients_by_type(self, types):
@@ -122,7 +122,7 @@ class DBMongo:
     #Recipes Page
     ## get all recipes
     def get_recipes(self):
-        return self.recipes.find()
+        return self.recipes.find().sort('name')
 
     #get all ingredients categories
     def get_ingredients_categories(self):
@@ -132,7 +132,7 @@ class DBMongo:
     def get_suitable_recipes(self, selected_ingredients):
         print(f"Selected ingredients: {selected_ingredients}")  # Print the selected ingredients
         suitable_recipes = []
-        all_recipes = self.recipes.find()
+        all_recipes = self.recipes.find().sort('name')
         for recipe in all_recipes:
             recipe_ingredients = [ingredient.split(' - ')[0] for ingredient in recipe['ingredients']]
             if all(ingredient in selected_ingredients for ingredient in recipe_ingredients):
