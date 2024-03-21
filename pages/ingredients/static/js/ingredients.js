@@ -68,34 +68,161 @@ SelectedIng.push('Salt');
 SelectedIng.push('Ground Black Pepper');
 SelectedIng.push('Sugar');
 
-// Get all 'Add' buttons
-let buttons = document.querySelectorAll('.IngAddButton');
+
+// This is the part that checks the chosen ingredients in the session and stylizes them as chosen
+
+// Get the chosen ingredients from the session
+////
+// let saved_Ingredients = {{ chosen_Ingredients|tojson|safe }};
+// console.log('Saved Ingredients:', saved_Ingredients); // Debuginh Check
+// // Get all ingredient cards
+// let ingredientCards = document.querySelectorAll('.ingredient-card');
+//
+// // Loop through all ingredient cards
+// ingredientCards.forEach(card => {
+//     // Get the ingredient name from the h3 element
+//     let ingredientName = card.querySelector('.ingredient-name').textContent;
+//
+//     // Check if the ingredient name is in the saved_Ingredients array
+//     if (saved_Ingredients.includes(ingredientName)) {
+//         // Get the 'Add' button
+//         let button = card.querySelector('.IngAddButton');
+//
+//         // Change the button's style and text content
+//         button.style.backgroundColor = 'rgb(98, 205, 20)'; // Change to green
+//         button.textContent = 'Remove'; // Change text to 'Remove'
+//
+//         // Add the ingredient name to the SelectedIng array
+//         SelectedIng.push(ingredientName);
+//     }
+// });
 
 
-// Console Validation of the array
 
-// Add event listener to each add button
-buttons.forEach(button => {
-    button.addEventListener('click', function() {
-        // Get the ingredient name from the sibling h3 element
-        let ingredientName = this.previousElementSibling.textContent;
+let ingredientGrid = document.querySelector('.ingredient-grid');
+let chosenIngredients = JSON.parse(ingredientGrid.dataset.chosenIngredients);
+console.log('Chosen Ingredients:', chosenIngredients); // Debug line
 
-        if (this.style.backgroundColor === 'rgb(98, 205, 20)') { // If already green cause was clicked before
-            this.style.backgroundColor = '#6D31EDFF'; // Change back to purple
-            this.textContent = 'Add'; // Change text back to 'Add'
-            const index = SelectedIng.indexOf(ingredientName); // Find the index of the ingredient in the array
-            if (index > -1) {
-                SelectedIng.splice(index, 1); // Remove the ingredient from the array
-            }
-        } else { // If not green cause was not clicked before
-            this.style.backgroundColor = 'rgb(98, 205, 20)'; // Change to green
-            this.textContent = 'Remove'; // Change text to 'Remove'
-            SelectedIng.push(ingredientName); // Add the ingredient to the array
+//
+// // Get all 'Add' buttons
+// let buttons = document.querySelectorAll('.IngAddButton');
+//
+//
+// // Console Validation of the array
+//
+// // Add event listener to each add button
+// buttons.forEach(button => {
+//     button.addEventListener('click', function() {
+//         // Get the ingredient name from the sibling h3 element
+//         let ingredientName = this.previousElementSibling.textContent;
+//
+//         if (this.style.backgroundColor === 'rgb(98, 205, 20)') { // If already green cause was clicked before
+//             this.style.backgroundColor = '#6D31EDFF'; // Change back to purple
+//             this.textContent = 'Add'; // Change text back to 'Add'
+//             const index = SelectedIng.indexOf(ingredientName); // Find the index of the ingredient in the array
+//             if (index > -1) {
+//                 SelectedIng.splice(index, 1); // Remove the ingredient from the array
+//             }
+//         } else { // If not green cause was not clicked before
+//             this.style.backgroundColor = 'rgb(98, 205, 20)'; // Change to green
+//             this.textContent = 'Remove'; // Change text to 'Remove'
+//             SelectedIng.push(ingredientName); // Add the ingredient to the array
+//         }
+//         console.log(SelectedIng);
+//     });
+// });
+
+class IngredientButton {
+    constructor(button, ingredientName, chosenIngredients, selectedIng) {
+        this.button = button;
+        this.ingredientName = ingredientName;
+        this.chosenIngredients = chosenIngredients;
+        this.selectedIng = selectedIng;
+        this.checkIfChosen(); // Check if the ingredient was chosen and saved in the session before
+
+        this.button.addEventListener('click', () => this.handleClick());
+
+    }
+
+    checkIfChosen() {
+        if (this.chosenIngredients.includes(this.ingredientName)) {
+            this.chosenBefore();
         }
-        console.log(SelectedIng);
-    });
+    }
+
+    chosenBefore() {
+        this.button.style.backgroundColor = 'rgb(98, 205, 20)'; // Change to green
+        this.removeFromChosenIngredients();
+        this.button.style.backgroundColor = 'rgb(98, 205, 20)'; // Change to green
+        this.button.textContent = 'Remove'; // Change text to 'Remove'
+        this.selectedIng.push(this.ingredientName);
+        console.log()
+    }
+
+    handleClick() {
+        if (this.button.style.backgroundColor === 'rgb(98, 205, 20)') { // If already green cause was clicked before
+            this.userRemove();
+        } else { // If not green cause was not clicked before
+            this.userAdd();
+        }
+        console.log(this.selectedIng);
+    }
+
+    userAdd() {
+        this.button.style.backgroundColor = 'rgb(98, 205, 20)';
+        this.button.textContent = 'Remove';
+        this.selectedIng.push(this.ingredientName); // Add the ingredient to the array
+    }
+
+
+
+    userRemove() {
+        this.button.style.backgroundColor = '#6D31EDFF'; // Change back to purple
+        this.button.textContent = 'Add'; // Change text back to 'Add'
+        const index = this.selectedIng.indexOf(this.ingredientName); // Find the index of the ingredient in the array
+        if (index > -1) {
+            this.selectedIng.splice(index, 1); // Remove the ingredient from the array
+        }
+    }
+
+    removeFromChosenIngredients() {
+        const index = this.chosenIngredients.indexOf(this.ingredientName);
+        if (index > -1) {
+            this.chosenIngredients.splice(index, 1);
+        }
+    }
+}
+
+// Usage
+let buttons = document.querySelectorAll('.IngAddButton');
+buttons.forEach(button => {
+    let ingredientName = button.previousElementSibling.textContent;
+    new IngredientButton(button, ingredientName, chosenIngredients, SelectedIng);
 });
 
+document.getElementById('Save_Choices').addEventListener('click', function() {
+    fetch('/storeSelectedIngredientsInSession', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(SelectedIng),
+    })
+    .then(response => {
+        if (response.ok) {
+            if (response.redirected) {
+                window.location.href = response.url;
+            } else {
+                console.log('Selected ingredients saved successfully');
+            }
+        } else {
+            console.error('Error:', response.statusText);
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
 
 // Now the filters part
 
@@ -201,5 +328,10 @@ document.getElementById('Show_Recipes').addEventListener('click', function() {
         console.error('Error:', error);
     });
 });
+
+
+
+
+
 
 

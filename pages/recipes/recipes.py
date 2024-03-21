@@ -59,6 +59,9 @@ def show_suitable_recipes():
 # This is the code that is used to store the selected ingredients in the session
 @recipes.route('/storeSelectedIngredients', methods=['POST'])
 def store_selected_ingredients():
-    selected_ingredients = request.json
-    session['selected_ingredients'] = selected_ingredients
-    return '', 204
+    try:
+        selected_ingredients = request.json
+        session['selected_ingredients'] = selected_ingredients
+        return '', 204
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400

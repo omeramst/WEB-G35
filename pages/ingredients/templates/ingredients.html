@@ -25,7 +25,7 @@
 </div>
 
 <div class="info-box">
-    <p>Choose ingredients that you have in your pantry! Click "Show Recipes" and find recipes that suit your choice</p>
+    <p>Choose ingredients that you have in your pantry! Click "Show Recipes & Save" and find recipes that suit your choice</p>
 </div>
 
 <div class="main-content">
@@ -49,12 +49,13 @@
         <button class="filter-apply-button" id="clear-filter" type="button">Clear Filters</button>
         <br>
         <br>
-        <button class="filter-apply-button" id="Show_Recipes" type="button">Show Recipes</button>
+        <button class="filter-apply-button" id="Show_Recipes" type="button">Show Recipes & Save </button>
+        <br>
+        <button class="filter-apply-button" id="Save_Choices" type="button">Save Choices</button>
 
     </div>
 
-    <div class="ingredient-grid">
-        <!-- Ofri - Ingredient cards should be added here by the Script I will build -->
+    <div class="ingredient-grid" data-chosen-ingredients='{{ chosen_ingredients|tojson|safe }}'>
         {% for ingredient in ingredients %}
         <div class="ingredient-card" data-type="{{ ingredient.type }}">
             <img src="{{ url_for('ingredients.static', filename='media/photos/' + ingredient.image) }}"
