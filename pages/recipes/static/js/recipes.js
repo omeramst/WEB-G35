@@ -181,3 +181,12 @@ document.querySelector('.search-button').addEventListener('click', function() {
         });
     }
 });
+
+// Add an event listener for the 'keydown' event on the search input field
+document.querySelector('.search-input').addEventListener('keydown', function(event) {
+    // If the key pressed is 'Enter', trigger the click event on the search button
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.querySelector('.search-button').click();
+    }
+});
