@@ -285,3 +285,60 @@ a:hover {
     text-align: center;
 
 }
+
+.header-search {
+    display: flex;
+    width: 362px;
+    height: 39px;
+
+}
+
+.search-input {
+    flex-grow: 1;
+    width: 362px;
+    height: 39px;
+    padding-left: 12px;
+    padding-right: 34px;
+    font-family: Manrope, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    background: #FFFFFFFF;
+    border-radius: 4px 0px 0px 4px;
+    border-width: 1px;
+    border-color: #9095A1FF;
+    outline: none;
+}
+
+.search-button {
+    width: 74px;
+    height: 43px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFFFF;
+    background: #6D31EDFF;
+    opacity: 1;
+    border: none;
+    border-radius: 0px 4px 4px 0px;
+    gap: 0px;
+    cursor: pointer;
+
+}
+
+button {
+    cursor: pointer;
+}
+
+.search-button:active {
+    color: #FFFFFFFF;
+    background: #3F0EA6FF;
+}
+
+.search-button svg {
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+
+}

@@ -18,4 +18,7 @@ favorite.addEventListener('click', function () {
             }
         });
     }
+    else {
+        alert("You must be logged in to use this feature")
+    }
 });
