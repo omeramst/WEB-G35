@@ -144,6 +144,16 @@ class IngredientButton {
 
     }
 
+    clearChoice() {
+        this.button.textContent = 'Add';
+        this.button.style.backgroundColor = '#6D31EDFF';
+        this.button.classList.remove('added');
+        const index = this.selectedIng.indexOf(this.ingredientName);
+        if (index > -1) {
+            this.selectedIng.splice(index, 1);
+        }
+    }
+
     checkIfChosen() {
         if (this.chosenIngredients.includes(this.ingredientName)) {
             this.chosenBefore();
@@ -195,9 +205,12 @@ class IngredientButton {
 
 // Usage
 let buttons = document.querySelectorAll('.IngAddButton');
+let ingredientButtons = []; // Array to store the IngredientButton instances
+
 buttons.forEach(button => {
     let ingredientName = button.previousElementSibling.textContent;
-    new IngredientButton(button, ingredientName, chosenIngredients, SelectedIng);
+    let ingredientButton = new IngredientButton(button, ingredientName, chosenIngredients, SelectedIng);
+    ingredientButtons.push(ingredientButton); // Store the instance in the array
 });
 
 document.getElementById('Save_Choices').addEventListener('click', function() {
@@ -224,8 +237,52 @@ document.getElementById('Save_Choices').addEventListener('click', function() {
     });
 });
 
-// Now the filters part
 
+// This event listener is attached to the "Clear Choices"
+// It clears choices and sends a POST to clear it from the session
+document.getElementById('Clear_Choices').addEventListener('click', function() {
+    // Clear the selected ingredients
+    SelectedIng = [];
+
+    // Reset the appearance of all ingredient cards
+    ingredientButtons.forEach(ingredientButton => {
+        ingredientButton.clearChoice();
+    });
+
+    // Clear the search input
+    document.querySelector('.search-input').value = '';
+
+    // Show all ingredient cards
+    document.querySelectorAll('.ingredient-card').forEach(card => card.style.display = 'block');
+
+    // Debug check
+    console.log('Chosen Ingredients:', chosenIngredients);
+
+    // Send a request to the server to clear the chosen ingredients from the session
+    fetch('/clearSelectedIngredientsInSession', {
+        method: 'POST',
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.error('Error:', response.statusText);
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
+
+// Clear the search input and show all the ingredients again
+document.getElementById('clear-all').addEventListener('click', function() {
+    // Clear the search input field
+    document.querySelector('.search-input').value = '';
+
+    // Show all ingredient cards
+    document.querySelectorAll('.ingredient-card').forEach(card => card.style.display = 'block');
+});
+
+
+// Now the filters part
 
 document.querySelector('#category-form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -328,6 +385,7 @@ document.getElementById('Show_Recipes').addEventListener('click', function() {
         console.error('Error:', error);
     });
 });
+
 
 
 

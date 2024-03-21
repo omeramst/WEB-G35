@@ -272,8 +272,29 @@ button {
     color: #171A1FFF;
     /*font-family: 'Comic Sans MS', cursive, sans-serif;*/
     border: 1px solid #6D31EDFF;
-    border-radius: 10px; /* rounded corners */
-    padding: 5px; /* space inside the box */
+    border-radius: 10px;
+    padding: 5px;
     box-shadow: 0px 0px 10px rgba(109, 49, 237, 0.2); /* shadow effect */
 
+}
+
+#clear-all {
+    margin-left: 20px;
+    background: #6D31EDFF;
+    color: #FFFFFFFF;
+    font-size: 12px;
+    width: 200px;
+    height: 43px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+#clear-all:active {
+    background-color: #5113D7FF; /* Change to a slightly different color when clicked */
 }
