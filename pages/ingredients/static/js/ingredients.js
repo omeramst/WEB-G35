@@ -1,101 +1,13 @@
-// const ingredients = [
-//     // Fix the path of the images, all are in the same folder. For example, the Kiwi path is `pages/ingredients/static/media/photos/Kiwi.png`
-//
-//
-//     { name: "Kiwi", image: `...media/photos/Kiwi.png`, type: "Fruits" },
-//     { name: "Salmon", image: "photos/salmon.jpeg", type: "Fish" },
-//     { name: "Basmati Rice", image: "photos/basmati_rice.jpeg", type: "Pantry Essentials"},
-//     { name: "Carrot", image: "photos/carrot.jpeg", type: "Vegetables" },
-//     { name: "Butter", image: "photos/butter.jpeg", type: "Dairy & Eggs" },
-//     { name: "Dijon Mustard", image: "photos/dijon_mustard.jpeg", type: "Pantry Essentials" },
-//     { name: "Lettuce", image: "photos/Lettuce.jpeg", type: "Vegetables" },
-//     { name: "Chicken Breast", image: "photos/chicken_breast_new.jpeg", type: "Meat" },
-//     { name: "Green Apple", image: "photos/Green_Apple.png", type: "Fruits" },
-//     { name: "Flour", image: "photos/flour_new.jpeg", type: "Pantry Essentials" },
-//     { name: "Vanilla", image: "photos/vanilla-1.png", type: "Pantry Essentials" },
-//     { name: "Whipped Cream", image: "photos/whipped cream.jpeg", type: "Dairy & Eggs" },
-//     { name: "Ground Cumin" , image: "photos/ground_cumin.jpeg", type: "Spices" },
-//     { name: "Sweet Paprika", image: "photos/sweet_paprika.jpg", type: "Spices" },
-//     { name: "Olive Oil", image: "photos/olive_oil.jpeg", type: "Pantry Essentials" },
-//     { name: "Honey", image: "photos/Honey.jpeg", type: "Pantry Essentials" },
-//     { name: "Chicken Egg", image: "photos/chick_egg_final.jpeg", type: "Dairy & Eggs" },
-//     { name: "Strawberry", image: "photos/strawberry_new.jpeg", type: "Fruits" },
-//     { name: "Baking Powder", image: "photos/backing powder.jpeg", type: "Pantry Essentials" },
-//     { name: "Parmesan Cheese", image: "photos/parmesan_good.jpeg", type: "Dairy & Eggs" },
-//
-//
-//
-//
-// ];
-//
-// const ingredientGrid = document.querySelector('.ingredient-grid');
-//
-// ingredients.forEach(ingredient => {
-//     const ingredientCard = document.createElement('div');
-//     ingredientCard.classList.add('ingredient-card');
-//     ingredientCard.dataset.type = ingredient.type;
-//
-//     const ingredientImage = document.createElement('img');
-//     ingredientImage.src = ingredient.image;
-//     ingredientImage.alt = ingredient.name;
-//
-//     const ingredientName = document.createElement('h3');
-//     ingredientName.textContent = ingredient.name;
-//     ingredientName.classList.add('ingredient-name'); // Ofri - Added this line to make the name of the ingredient centered.
-//
-//     const applyButton = document.createElement('button');
-//     applyButton.textContent = 'Add';
-//     applyButton.classList.add('IngAddButton');
-//     // Ofri - This event listener will help us later when we will do backend and Add the ingredients to the user's List.
-//     applyButton.addEventListener('click', () => {
-//     if (applyButton.style.backgroundColor === 'rgb(98, 205, 20)') { // //Ofri - IF already green cause was clicked before
-//         applyButton.style.backgroundColor = '#6D31EDFF';
-//     } else { //Ofri - If not green cause was not clicked before
-//         applyButton.style.// Create an empty array to store the chosen ingredients
-
-//     }
-// });
-//
-//     ingredientCard.append(ingredientImage, ingredientName, applyButton);
-//     ingredientGrid.append(ingredientCard);
-// });
 
 // Create an empty array to store the chosen ingredients
 let SelectedIng = [];
 
-// Always include salt and pepper
+// Always include sugar, salt and pepper
 SelectedIng.push('Salt');
 SelectedIng.push('Ground Black Pepper');
 SelectedIng.push('Sugar');
 
 
-// This is the part that checks the chosen ingredients in the session and stylizes them as chosen
-
-// Get the chosen ingredients from the session
-////
-// let saved_Ingredients = {{ chosen_Ingredients|tojson|safe }};
-// console.log('Saved Ingredients:', saved_Ingredients); // Debuginh Check
-// // Get all ingredient cards
-// let ingredientCards = document.querySelectorAll('.ingredient-card');
-//
-// // Loop through all ingredient cards
-// ingredientCards.forEach(card => {
-//     // Get the ingredient name from the h3 element
-//     let ingredientName = card.querySelector('.ingredient-name').textContent;
-//
-//     // Check if the ingredient name is in the saved_Ingredients array
-//     if (saved_Ingredients.includes(ingredientName)) {
-//         // Get the 'Add' button
-//         let button = card.querySelector('.IngAddButton');
-//
-//         // Change the button's style and text content
-//         button.style.backgroundColor = 'rgb(98, 205, 20)'; // Change to green
-//         button.textContent = 'Remove'; // Change text to 'Remove'
-//
-//         // Add the ingredient name to the SelectedIng array
-//         SelectedIng.push(ingredientName);
-//     }
-// });
 
 
 
@@ -103,35 +15,8 @@ let ingredientGrid = document.querySelector('.ingredient-grid');
 let chosenIngredients = JSON.parse(ingredientGrid.dataset.chosenIngredients);
 console.log('Chosen Ingredients:', chosenIngredients); // Debug line
 
-//
-// // Get all 'Add' buttons
-// let buttons = document.querySelectorAll('.IngAddButton');
-//
-//
-// // Console Validation of the array
-//
-// // Add event listener to each add button
-// buttons.forEach(button => {
-//     button.addEventListener('click', function() {
-//         // Get the ingredient name from the sibling h3 element
-//         let ingredientName = this.previousElementSibling.textContent;
-//
-//         if (this.style.backgroundColor === 'rgb(98, 205, 20)') { // If already green cause was clicked before
-//             this.style.backgroundColor = '#6D31EDFF'; // Change back to purple
-//             this.textContent = 'Add'; // Change text back to 'Add'
-//             const index = SelectedIng.indexOf(ingredientName); // Find the index of the ingredient in the array
-//             if (index > -1) {
-//                 SelectedIng.splice(index, 1); // Remove the ingredient from the array
-//             }
-//         } else { // If not green cause was not clicked before
-//             this.style.backgroundColor = 'rgb(98, 205, 20)'; // Change to green
-//             this.textContent = 'Remove'; // Change text to 'Remove'
-//             SelectedIng.push(ingredientName); // Add the ingredient to the array
-//         }
-//         console.log(SelectedIng);
-//     });
-// });
 
+// This class will handle the button clicks for each ingredient
 class IngredientButton {
     constructor(button, ingredientName, chosenIngredients, selectedIng) {
         this.button = button;
@@ -272,14 +157,31 @@ document.getElementById('Clear_Choices').addEventListener('click', function() {
     });
 });
 
-// Clear the search input and show all the ingredients again
+
+// This event listener is attached to the "Clear All" button that will clear the search input field and show ingredients
 document.getElementById('clear-all').addEventListener('click', function() {
     // Clear the search input field
     document.querySelector('.search-input').value = '';
 
-    // Show all ingredient cards
-    document.querySelectorAll('.ingredient-card').forEach(card => card.style.display = 'block');
+    // Collect all checked categories
+    let checkedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(input => input.value);
+
+    // If no categories are checked, show all ingredients
+    if (checkedCategories.length === 0) {
+        document.querySelectorAll('.ingredient-card').forEach(card => card.style.display = 'block');
+        return;
+    }
+
+    // If there are checked categories, show only those ingredients
+    document.querySelectorAll('.ingredient-card').forEach(card => {
+        if (checkedCategories.includes(card.dataset.type)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 });
+
 
 
 // Now the filters part
