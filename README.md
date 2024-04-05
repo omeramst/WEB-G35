@@ -23,15 +23,23 @@ They can also explore new tastes and meals by just entering the Recipes page
 
 ## 3. Screenshots
 
-![Homepage](/path/to/homepage_screenshot.png)
+![Homepage](README_SCRNSHTS/Homepage.png)
 *The homepage displays all ingredients. Users can filter and search for ingredients here.*
 
-![Filtered Ingredients](/path/to/filtered_ingredients_screenshot.png)
-*This is how the page looks after applying filters.*
+![Sign Up](README_SCRNSHTS/SignUp.png)
+*This is the sign up page.*
 
-![Search Results](/path/to/search_results_screenshot.png)
-*This screenshot shows the results of a search operation.*
+![Ingredients](README_SCRNSHTS/Ingredients.png)
+*This is the page where all available ingredients are displayed.*
 
-![Selected Recipes](/path/to/selected_recipes_screenshot.png)
-*This is the page where suitable recipes based on the selected ingredients are displayed.*
+![Login](README_SCRNSHTS/Login.png)
+*This is the login page.*
 
+![No Suitable Recipes](README_SCRNSHTS/NoSuitableRecipes.png)
+*This screenshot shows the page when no suitable recipes are found.*
+
+![Recipes](README_SCRNSHTS/Recipes.png)
+*This is the page where all recipes are displayed.*
+
+![Single Recipe](README_SCRNSHTS/Single Recipe.png)
+*This screenshot shows the details of a single recipe.*
