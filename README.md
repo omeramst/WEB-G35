@@ -41,5 +41,5 @@ They can also explore new tastes and meals by just entering the Recipes page
 ![Recipes](README_SCRNSHTS/Recipes.png)
 *This is the page where all recipes are displayed.*
 
-![Single Recipe](README_SCRNSHTS/Single Recipe.png)
+![Single Recipe](README_SCRNSHTS/SingleRecipe.png)
 *This screenshot shows the details of a single recipe.*
