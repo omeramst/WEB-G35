@@ -29,11 +29,11 @@ They can also explore new tastes and meals by just entering the Recipes page
 ![Sign Up](README_SCRNSHTS/SignUp.png)
 *This is the sign up page.*
 
-![Ingredients](README_SCRNSHTS/Ingredients.png)
-*This is the page where all available ingredients are displayed.*
-
 ![Login](README_SCRNSHTS/Login.png)
 *This is the login page.*
+
+![Ingredients](README_SCRNSHTS/Ingredients.png)
+*This is the page where all available ingredients are displayed.*
 
 ![No Suitable Recipes](README_SCRNSHTS/NoSuitableRecipes.png)
 *This screenshot shows the page when no suitable recipes are found.*
