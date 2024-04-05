@@ -10,7 +10,7 @@ They can also explore new tastes and meals by just entering the Recipes page
 
 1. The user lands on the homepage where an introduction is written and button to pages are displayed.
 2. The user can log in using their credentials. If they don't have an account, they can sign up.
-3. The user can enter the Ingerediants page to view all available ingredients.
+3. The user can enter the Ingredients page to view all available ingredients.
 4. The user can select, search and filter ingredients based on their preferences.
 5. The user can click on the 'Show Recipes' button to view suitable recipes.
 6. If logged in, the user can see his favorite recipes by clicking on the 'Show Favorites' button.
