@@ -6,7 +6,7 @@ The main idea behind this project is to provide a platform where users can easil
 They can also explore new tastes and meals by just entering the Recipes page
 
 
-## 3. Order of Operations
+## 2. Order of Operations
 
 1. The user lands on the homepage where an introduction is written and button to pages are displayed.
 2. The user can log in using their credentials. If they don't have an account, they can sign up.
