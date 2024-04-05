@@ -296,5 +296,17 @@ button {
 }
 
 #clear-all:active {
-    background-color: #5113D7FF; /* Change to a slightly different color when clicked */
+    background-color: #5113D7FF;
+}
+
+#clear-all:hover {
+    background-color: #5113D7FF;
+}
+
+.search-button:hover {
+    background-color: #5113D7FF;
+}
+
+.IngAddButton:hover {
+    background-color: #5113D7FF;
 }

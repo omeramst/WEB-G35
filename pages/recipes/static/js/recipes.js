@@ -15,7 +15,7 @@ window.addEventListener('load', async function (e) {
     const filter = new Filter();
     filter.collectFilters();
     filter.applyFilters();
-    });
+});
 
 class Filter {
     constructor() {
@@ -114,16 +114,15 @@ document.querySelector('.favorite-button').addEventListener('click', async funct
                 filter.clearFilters();
                 if (saved.length === 0) {
                     alert("You have no saved recipes")
+                } else {
+                    document.querySelectorAll('.recipe-card').forEach(card => {
+                        if (saved.includes(card.dataset.id)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
                 }
-                else {
-                document.querySelectorAll('.recipe-card').forEach(card => {
-                    if (saved.includes(card.dataset.id)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
             } else {
                 alert("there was an error getting the saved recipes, please try again later")
             }
@@ -133,7 +132,7 @@ document.querySelector('.favorite-button').addEventListener('click', async funct
     }
 });
 
-document.querySelector('.search-button').addEventListener('click', function() {
+document.querySelector('.search-button').addEventListener('click', function () {
     // Get the search text
     let searchText = document.querySelector('.search-input').value.toLowerCase();
 
@@ -183,10 +182,24 @@ document.querySelector('.search-button').addEventListener('click', function() {
 });
 
 // Add an event listener for the 'keydown' event on the search input field
-document.querySelector('.search-input').addEventListener('keydown', function(event) {
+document.querySelector('.search-input').addEventListener('keydown', function (event) {
     // If the key pressed is 'Enter', trigger the click event on the search button
     if (event.keyCode === 13) {
         event.preventDefault();
         document.querySelector('.search-button').click();
     }
+});
+
+// add event listener to clear search button
+document.querySelector('#clear-all').addEventListener('click', function (e) {
+    e.preventDefault()
+    // Clear the search input field
+    document.querySelector('.search-input').value = '';
+    //collect the filters
+    const filter = new Filter();
+    filter.collectFilters();
+    //apply the filters
+    filter.applyFilters();
+    //final
+   document.querySelector('.filter-apply-button').click();
 });

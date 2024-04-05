@@ -14,3 +14,7 @@ DB = {
 }
 
 mongoDB = {'uri': "mongodb+srv://omer:123@cookify.labufvf.mongodb.net/?retryWrites=true&w=majority&appName=Cookify"}
+
+### should work without this comment - but feel free to try it out
+# uri = os.environ.get('mongodb+srv://omer:123@cookify.labufvf.mongodb.net/?retryWrites=true&w=majority&appName=Cookify')
+
