@@ -1,5 +1,7 @@
 # Cookify
 
+Cookify is a web application created by Ofri Markevitch and Omer Amsterdam.
+
 ## 1. Idea Explanation - A reminder
 
 The main idea behind this project is to provide a platform where users can easily search for personalized recipes based on ingredients they have in their home.
