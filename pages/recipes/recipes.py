@@ -46,14 +46,16 @@ def show_suitable_recipes():
     print(f"Received selected ingredients: {selected_ingredients}")  # Print the received ingredients
     suitable_recipes = DB.get_suitable_recipes(selected_ingredients)
     print(f"Returning suitable recipes: {suitable_recipes}")  # Print the suitable recipes
-
+    recipes = DB.get_recipes()
+    sensitivities = DB.get_sensitivities()
+    cuisines = DB.get_cusines()
     # Check if there are any suitable recipes
     if suitable_recipes:
         # If there are suitable recipes, render the recipes.html template with the suitable recipes
-        return render_template('recipes.html', recipes=suitable_recipes, no_recipes_found=False)
+        return render_template('recipes.html', recipes=suitable_recipes, no_recipes_found=False, sensitivities=sensitivities, cuisines=cuisines, usercusine=[], usersensitivity=[])
     else:
         # If there are no suitable recipes, render the recipes.html template with no_recipes_found set to True
-        return render_template('recipes.html', recipes=[], no_recipes_found=True)
+        return render_template('recipes.html', recipes=[], no_recipes_found=True, sensitivities=sensitivities, cuisines=cuisines, usercusine=[], usersensitivity=[])
 
 
 # This is the code that is used to store the selected ingredients in the session

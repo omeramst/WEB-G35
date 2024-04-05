@@ -9,4 +9,5 @@ navbar = Blueprint('navbar', __name__, static_folder='static', static_url_path='
 def logout():
     session['logged_in'] = False
     session['email'] = ''
+    session['selected_ingredients'] = []
     return redirect('/')
