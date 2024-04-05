@@ -27,19 +27,19 @@ They can also explore new tastes and meals by just entering the Recipes page
 *The homepage displays all ingredients. Users can filter and search for ingredients here.*
 
 ![Sign Up](README_SCRNSHTS/SignUp.png)
-*This is the sign up page.*
+*This is the sign up page. User can add his preferences here.*
 
 ![Login](README_SCRNSHTS/Login.png)
-*This is the login page.*
+*This is the login popup.*
 
 ![Ingredients](README_SCRNSHTS/Ingredients.png)
-*This is the page where all available ingredients are displayed.*
+*This is the page where all available ingredients are displayed. The user can search, filter and select ingredients as he wants.*
 
 ![No Suitable Recipes](README_SCRNSHTS/NoSuitableRecipes.png)
-*This screenshot shows the page when no suitable recipes are found.*
+*If the user clicks show recipes button, and no suitable recipes were found, This page will be shown.*
 
 ![Recipes](README_SCRNSHTS/Recipes.png)
-*This is the page where all recipes are displayed.*
+*This is the page where suitable recipes/all recipes are displayed.*
 
 ![Single Recipe](README_SCRNSHTS/SingleRecipe.png)
-*This screenshot shows the details of a single recipe.*
+*This screenshot shows the details of a single recipe, If the user liked it, can add it to "favorites".*
