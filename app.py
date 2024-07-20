@@ -15,6 +15,10 @@ def set_default_session():
     if 'email' not in session:
         session['email'] = ''
 
+@app.route('/health')
+def health():
+    return "OK", 200
+
 ###### Pages
 ## Homepage
 from pages.homepage.homepage import homepage
